@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../asset/logo.png' 
+import "./style.css";
+
 
 function Sidebar() {
-    const [style, setStyle] = useState("navbar-nav bg-gradient-dark sidebar sidebar-dark accordion");
+
+    const [style, setStyle] = useState("navbar-nav bg-black sidebar sidebar-dark accordion");
 
     const changeStyle = () => {
         if (style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -27,19 +31,17 @@ function Sidebar() {
 
                 {/*  <!-- Sidebar - Brand --> */}
                 <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-                    <div className="sidebar-brand-icon rotate-n-15">
-                        <i className="fas fa-laugh-wink"></i>
+                    <div className="sidebar-brand-icon">
+                        <img src={logo} alt="Logo" style={{ width: "30px", height: "30px" }} />
                     </div>
-                    <div className="sidebar-brand-text mx-3">Gamex</div>
+                    <div className="sidebar-brand-text mx-3">Funzy</div>
                     <div className="text-center d-none d-md-inline">
                         <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
                     </div>
                 </a>
-
-                {/*   <!-- Divider --> */}
+            
                 <hr className="sidebar-divider my-0" />
 
-                {/*  <!-- Nav Item - Dashboard --> */}
                 <li className="nav-item active">
                     <a className="nav-link" href="/dashboard">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
@@ -54,7 +56,7 @@ function Sidebar() {
                         <i className="fas fa-fw fa-chart-area"></i>
                         <span>All User</span></Link>
                 </li> */}
-                <li className="nav-item">
+                <li className="nav-item colors">
                     <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
                         aria-expanded="true" aria-controls="collapseUser">
                         <i className="fas fa-fw fa-folder"></i>

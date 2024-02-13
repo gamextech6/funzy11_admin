@@ -36,7 +36,7 @@ function UpCommingGame() {
                                         <div className="table-container" style={{ overflowX: 'auto' }}>
                                             <div className="row">
                                                 <div className="col">
-                                                    <h5 className="pb-2 mb-0">All Up Comming Game List</h5>
+                                                    <h5 className="pb-2 mb-0 text-center">All Up Comming Game List</h5>
                                                 </div>
                                             </div>
 
