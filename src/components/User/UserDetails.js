@@ -55,45 +55,48 @@ const UserDetails = ({ match }) => {
     }, []);
 
     return (
-        <div>
+        <div className="card">
             <body id="page-top">
                 <div id="wrapper">
                     <Sidebar />
                     <div id="content-wrapper" className="d-flex flex-column">
                         <div id="content">
                             <Header />
-                            <div className="container">
-                                <div className="row">
-                                    <div className='col-lg-12 mb-4 col-sm-12'>
-                                        <div className="table-container" style={{ overflowX: 'auto' }}>
-                                            <div className="row">
-                                                <div className="col">
-                                                    <h5 className="pb-2 mb-0">User Details</h5>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div className="">
-                                                {/* Conditionally render each piece of information */}
-                                                {firstName && <p><b>First Name :</b> {firstName}</p>}
-                                                {lastName && <p><b>Last Name :</b> {lastName}</p>}
-                                                {userNa && <p><b>User Name :</b> {userNa}</p>}
-                                                {phoneNo && <p><b>Phone No. :</b> {phoneNo}</p>}
-                                                {gender && <p><b>Gender :</b> {gender}</p>}
-                                                {dob && <p><b>Dob :</b> {dob}</p>}
-                                                {balance !== undefined && <p><b>Balance :</b> {balance}</p>}
-                                                {referrerCode && <p><b>Referral code :</b> {referrerCode}</p>}
-                                                <button
-                                                    type="button"
-                                                    className={`btn ${isBlocked ? 'btn-success' : 'btn-danger'} mx-5 px-5`}
-                                                    onClick={handleToggleBlockUser}
-                                                >
-                                                    {isBlocked ? 'Unblock' : 'Block'}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div className="card">
+    <div className="card-body">
+        <div className="row">
+            <div className='col-lg-12 mb-4 col-sm-12'>
+                <div className="table-container" style={{ overflowX: 'auto' }}>
+                    <div className="row">
+                        <div className="col">
+                            <h5 className="pb-2 mb-0">User Details</h5>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className="">
+                        {/* Conditionally render each piece of information */}
+                        {firstName && <p><b>First Name :</b> {firstName}</p>}
+                        {lastName && <p><b>Last Name :</b> {lastName}</p>}
+                        {userNa && <p><b>User Name :</b> {userNa}</p>}
+                        {phoneNo && <p><b>Phone No. :</b> {phoneNo}</p>}
+                        {gender && <p><b>Gender :</b> {gender}</p>}
+                        {dob && <p><b>Dob :</b> {dob}</p>}
+                        {balance !== undefined && <p><b>Balance :</b> {balance}</p>}
+                        {referrerCode && <p><b>Referral code :</b> {referrerCode}</p>}
+                        <button
+                            type="button"
+                            className={`btn ${isBlocked ? 'btn-success' : 'btn-danger'} mx-5 px-5`}
+                            onClick={handleToggleBlockUser}
+                        >
+                            {isBlocked ? 'Unblock' : 'Block'}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                         </div>
                         <footer className="sticky-footer bg-white">
                             <div className="container my-auto">
@@ -113,6 +116,3 @@ const UserDetails = ({ match }) => {
 };
 
 export default UserDetails;
-
-
-

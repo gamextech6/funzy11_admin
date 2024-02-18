@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../comman/Sidebar";
 import Modal from "react-modal";
 import Header from "../comman/Header";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { addPrizeAndPoll, getRankPrice } from "../../api";
 Modal.setAppElement("#root");
 
@@ -27,7 +27,7 @@ function AddRankAndPriceList() {
     const fetchData = async (contest_id) => {
       try {
         const result = await getRankPrice(contest_id);
-        console.log(result)
+        console.log(result);
         setRankPrice(result);
       } catch (error) {
         // Handle errors
@@ -58,9 +58,9 @@ function AddRankAndPriceList() {
       });
       // Handle the API response here if needed
       console.log("API Response:", response);
-      
+
       openModal();
-      
+
       const updatedResult = await getRankPrice(contest_id);
       setRankPrice(updatedResult);
 
@@ -83,139 +83,197 @@ function AddRankAndPriceList() {
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
             <div id="content">
-              <Header />
-              <div className="container-fluid">
+              <div class="card shadow">
+                <div class="card-body">
+                  <h3 className="pl-3">Add Rank And Prize</h3>
+                </div>
+              </div>
+              <div className="container-fluid p-2">
                 <div className="row">
-                  <div className="col-lg-6 mb-4 col-sm-12">
-                    <div
-                      className="table-container mb-3"
-                      style={{ overflowX: "auto" }}
-                    >
-                      <div className="row mb-3">
-                        <div className="col">
-                          <h5 className="mt-2">Add Rank And Prize</h5>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-12 mb-4">
-                          <form
-                            className="login-form"
-                            onSubmit={handleFormSubmit}
-                          >
-                            <div className="form-outline mb-4">
-                              <label className="form-label" htmlFor="prizePool">
-                                Rank From
-                              </label>
-                              <input
-                                type="text"
-                                id="prizePool"
-                                className={`form-control ${
-                                  errors.from ? "is-invalid" : ""
-                                }`}
-                                placeholder="Enter rank from"
-                                value={formData.from}
-                                onChange={(e) =>
-                                  setFormData({
-                                    ...formData,
-                                    from: e.target.value,
-                                  })
-                                }
-                              />
-                              {errors.from && (
-                                <div className="invalid-feedback">
-                                  {errors.from}
-                                </div>
-                              )}
-                            </div>
-                            <div className="form-outline mb-4">
-                              <label className="form-label" htmlFor="prizePool">
-                                Rank To
-                              </label>
-                              <input
-                                type="text"
-                                id="prizePool"
-                                className={`form-control ${
-                                  errors.to ? "is-invalid" : ""
-                                }`}
-                                placeholder="Enter rank to"
-                                value={formData.to}
-                                onChange={(e) =>
-                                  setFormData({
-                                    ...formData,
-                                    to: e.target.value,
-                                  })
-                                }
-                              />
-                              {/* {errors.to && <div className="invalid-feedback">{errors.to}</div>} */}
-                            </div>
-                            <div className="form-outline mb-4">
-                              <label className="form-label" htmlFor="entryFee">
-                                Price
-                              </label>
-                              <input
-                                type="text"
-                                id="entryFee"
-                                className={`form-control ${
-                                  errors.price ? "is-invalid" : ""
-                                }`}
-                                placeholder="Enter price"
-                                value={formData.price}
-                                onChange={(e) =>
-                                  setFormData({
-                                    ...formData,
-                                    price: e.target.value,
-                                  })
-                                }
-                              />
-                              {errors.price && (
-                                <div className="invalid-feedback">
-                                  {errors.price}
-                                </div>
-                              )}
-                            </div>
-                            <div className="text-center text-lg-start mt-4 pt-2">
-                              <button
-                                type="submit"
-                                className="btn btn-primary btn-lg"
-                              >
-                                Proceed
-                              </button>
-                            </div>
-                          </form>
-                        </div>
+                  <div className="col-lg-12 mb-4 col-sm-12">
+                    <div className="card shadow p-3">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <img alt="" width="70" />
+                        <h5 className="card-title mb-0">teama_s_n</h5>
+                        <h5 className="timeBorder time text-danger pt-3">
+                          date Time
+                        </h5>
+                        <h5 className="card-title mb-0">teamb_s_n</h5>
+                        <img alt="" width="70" />
+                        <Link className="btn btn-success">
+                          Add Another Pool Prize
+                        </Link>
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-6 mb-4 col-sm-12">
-                    <div
-                      className="table-container"
-                      style={{ overflowX: "auto" }}
-                    >
-                      <div className="row">
-                        <div className="col">
-                          <h5 className="pb-2 mb-0">List Of Rank And Price</h5>
-                        </div>
-                      </div>
-                      <hr />
-                      <div>
-                        <div>
-                          {rankPrize && rankPrize.data ? (
-                            <div>
-                              <h3>{rankPrize.message}</h3>
-                              <ul>
-                                {console.log(rankPrize.data)}
-                                {Object.entries(rankPrize.data).map(
-                                  ([rank, price]) => (
-                                    <li key={rank}>
-                                       {rank}: ₹{price}
-                                    </li>
-                                  )
+                </div>
+              </div>
+
+              <p className="text-center">card for pool</p>
+
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col-lg-12 mb-4 col-sm-12">
+                    <div className="card shadow">
+                      <div className="card-body">
+                        <div className="row">
+                          <div className="col-lg-8 mb-4 col-sm-12">
+                            <form
+                              className="login-form"
+                              onSubmit={handleFormSubmit}
+                            >
+                              <div className="form-outline mb-4">
+                                <label
+                                  className="form-label"
+                                  htmlFor="prizePool"
+                                >
+                                  Rank From
+                                </label>
+                                <input
+                                  type="text"
+                                  id="prizePool"
+                                  className={`form-control ${
+                                    errors.from ? "is-invalid" : ""
+                                  }`}
+                                  placeholder="Enter rank from"
+                                  value={formData.from}
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      from: e.target.value,
+                                    })
+                                  }
+                                />
+                                {errors.from && (
+                                  <div className="invalid-feedback">
+                                    {errors.from}
+                                  </div>
                                 )}
-                              </ul>
+                              </div>
+                              <div className="form-outline mb-4">
+                                <label
+                                  className="form-label"
+                                  htmlFor="prizePool"
+                                >
+                                  Rank To
+                                </label>
+                                <input
+                                  type="text"
+                                  id="prizePool"
+                                  className={`form-control ${
+                                    errors.to ? "is-invalid" : ""
+                                  }`}
+                                  placeholder="Enter rank to"
+                                  value={formData.to}
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      to: e.target.value,
+                                    })
+                                  }
+                                />
+                              </div>
+                              <div className="form-outline mb-4">
+                                <label
+                                  className="form-label"
+                                  htmlFor="entryFee"
+                                >
+                                  Price
+                                </label>
+                                <input
+                                  type="text"
+                                  id="entryFee"
+                                  className={`form-control ${
+                                    errors.price ? "is-invalid" : ""
+                                  }`}
+                                  placeholder="Enter price"
+                                  value={formData.price}
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      price: e.target.value,
+                                    })
+                                  }
+                                />
+                                {errors.price && (
+                                  <div className="invalid-feedback">
+                                    {errors.price}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="text-lg-start mt-4 pt-2">
+                                <button
+                                  type="submit"
+                                  className="btn btn-lg"
+                                  style={{
+                                    backgroundColor: "#924ACD",
+                                    color: "#fff",
+                                  }}
+                                >
+                                  Proceed
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                          <div className="col-lg-4 mb-4 col-sm-12">
+                            <div className="card shadow">
+                              <div
+                                className="card-body p-3"
+                                style={{
+                                  backgroundColor: "rgba(0, 0, 0, 0.05)",
+                                }}
+                              >
+                                <p className="card-title pb-2 mb-0">
+                                  List Of Rank And Prize
+                                </p>
+                                <div>
+                                  <table
+                                    className="table"
+                                    style={{
+                                      backgroundColor: "rgba(0, 0, 0, 0.05)",
+                                    }}
+                                  >
+                                    <thead>
+                                      <tr>
+                                        <th>Rank</th>
+                                        <th>Prize</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {rankPrize && rankPrize.data ? (
+                                        Object.entries(rankPrize.data).map(
+                                          ([rank, price]) => (
+                                            <tr
+                                              key={rank}
+                                              style={{
+                                                backgroundColor:
+                                                  "rgba(0, 0, 0, 0.05)",
+                                              }}
+                                            >
+                                              <td>{rank}</td>
+                                              <td>₹{price}</td>
+                                            </tr>
+                                          )
+                                        )
+                                      ) : (
+                                        <tr>
+                                          <td
+                                            colSpan="2"
+                                            style={{
+                                              backgroundColor:
+                                                "rgba(0, 0, 0, 0.05)",
+                                            }}
+                                          >
+                                            No data available
+                                          </td>
+                                        </tr>
+                                      )}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
                             </div>
-                          ) : (
-                            <p>No data available</p>
-                          )}
+                          </div>
                         </div>
                       </div>
                     </div>

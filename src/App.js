@@ -13,11 +13,13 @@ import CompletedMatches from "./components/Game/CompletedMatches";
 import PostPrizePool from "./components/Game/PostPrizePool";
 import ListOfPostedPollPrize from "./components/Game/ListOfPostedPollPrize";
 import AddRankAndPriceList from "./components/Game/AddRankAndPriceList";
+import ShowRankAndPriceList from "./components/Game/ShowRankAndPrize";
 import LiveMatches from "./components/Game/LiveMatches";
 import AllUserNotification from "./components/notification/AllUserNotification";
 import NotificationByPhonezNo from "./components/notification/NotificationByPhonezNo";
 import ListOfAllNotification from "./components/notification/ListOfAllNotification";
 import ListOfAllnotificationOfSpecificUser from "./components/notification/ListOfAllnotificationOfSpecificUser";
+import WithdrawalRequest from "./components/Bank/WithdrawlRequest";
 
 function App() {
   return (
@@ -34,11 +36,13 @@ function App() {
         <Route path="list-of-posted-poll-prize/:matchId" element={<ListOfPostedPollPrize/>} />
         <Route path="/user-details/:phoneNumber" element={<UserDetails />} />
         <Route path="/add-rank-price/:contest_id" element={<AddRankAndPriceList />} />
+        <Route path="/show-rank-price/:contest_id" element={<ShowRankAndPriceList />} />
         <Route path="/live-matches" element={<LiveMatches />} />
         <Route path="/notification-to-all-user" element={<AllUserNotification/>} />
         <Route path="/notification-to-specific-user" element={<NotificationByPhonezNo/>} />
         <Route path="/list-of-all-notification" element={<ListOfAllNotification/>} />
         <Route path="/list-of-all-notification-specific-user" element={<ListOfAllnotificationOfSpecificUser/>} />
+        <Route path="/withdrawal-requests" element={<WithdrawalRequest/>} />
         <Route path="demo" element={<Dashboards />} />
       </Routes>
     </BrowserRouter>

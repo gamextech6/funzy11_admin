@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../comman/Sidebar';
-import Header from '../comman/Header';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { fetchPoolContestData, deletePoolContest } from "../../api";
@@ -45,7 +44,6 @@ function ListOfAllNotification() {
                     <Sidebar />
                     <div id="content-wrapper" className="d-flex flex-column">
                         <div id="content">
-                            <Header />
                             <div className="container">
                                 <div className="row">
                                     <div className='col-lg-12 mb-4 col-sm-12'>

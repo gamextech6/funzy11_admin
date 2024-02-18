@@ -360,3 +360,46 @@ export const editPoolContest = async ( _id, price_pool_percent, entry_fee, total
     throw new Error('Error during login.');
   }
 };
+
+export const userWithdrawlRequest = async () => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow',
+  };
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/userWithdrawlRequest`, requestOptions);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+};
+
+export const userWithdrawlRequestByWithdrawlID = async (withdrawlID) => {
+  try {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const raw = JSON.stringify({
+      withdrawlID
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    const response = await fetch(`${API_BASE_URL}/admin/userWithdrawlRequestByWithdrawlID`, requestOptions);
+    const result = await response.text();
+    return result;
+  } catch (error) {
+    throw new Error('Error blocking user.');
+  }
+};
+

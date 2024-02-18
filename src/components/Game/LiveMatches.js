@@ -5,16 +5,15 @@ import "./UpCommingGame.css";
 import { Link } from "react-router-dom";
 import { fetchLiveMatches } from "../../api";
 
-
 function LiveMatches() {
-  const [matchData, setmatchData] = useState([]);
+  const [matchData, setMatchData] = useState([]);
 
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {
         const result = await fetchLiveMatches();
         console.log(result.liveMatches);
-        setmatchData(result.liveMatches);
+        setMatchData(result.liveMatches);
       } catch (error) {
         // Handle errors
       }
@@ -30,58 +29,34 @@ function LiveMatches() {
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
             <div id="content">
-              <Header />
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-lg-12 mb-4">
-                    <div
-                      className="table-container"
-                      style={{ overflowX: "auto" }}
-                    >
-                      <div className="row">
-                        <div className="col">
-                          <h5 className="pb-2 mb-0">
-                            All Live Matches List
-                          </h5>
+              <div class="card shadow">
+                <div class="card-body">
+                  <h3 className="pl-3">Live Match List</h3>
+                </div>
+              </div>
+              <div className="container-fluid p-5">
+                <div className="row g-4">
+                  {matchData.map((match) => (
+                    <div key={match.match_id} className="col-12">
+                      <div className="card shadow p-3">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <img src={match.teama_logo} alt="" width="70" />
+                          <h5 className="card-title mb-0">{match.teama_name}</h5>
+                          <p className="timeBorder time text-danger pt-3">
+                            {match.startdatetime}
+                          </p>
+                          <h5 className="card-title mb-0">{match.teamb_name}</h5>
+                          <img src={match.teamb_logo} alt="" width="70" />
+                          <Link
+                            to={`/post-pool-prize/${match.match_id}`}
+                            className="btn btn-success"
+                          >
+                            Post Poll For This Match
+                          </Link>
                         </div>
                       </div>
-                      <div className="matchcontainer">
-                        {matchData.map((match) => (
-                          <Link
-                            to={`/list-of-posted-poll-prize/${match.match_id}`}
-                            key={match.match_id}
-                          >
-                            <div className="match">
-                              <div className="matchcenter">
-                                <div className="matchlefts">
-                                  <img
-                                    src={match.teama_logo}
-                                    alt=""
-                                    width="40"
-                                  />
-                                  <h5>{match.teama_name}</h5>
-                                </div>
-                                <p
-                                  className="time"
-                                  style={{ color: "rgb(225, 0, 0)" }}
-                                >
-                                  {match.startdatetime}
-                                </p>
-                                <div className="matchrights">
-                                  <h5>{match.teamb_name}</h5>
-                                  <img
-                                    src={match.teamb_logo}
-                                    alt=""
-                                    width="40"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>

@@ -60,11 +60,11 @@ function Sidebar() {
                     <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
                         aria-expanded="true" aria-controls="collapseUser">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>User</span>
+                        <span>Users</span>
                     </a>
                     <div id="collapseUser" className="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
                         <div className="bg-white py-2 collapse-inner rounded">
-                            <Link className="collapse-item" to="/all-user">All User</Link>
+                            <Link className="collapse-item" to="/all-user">All Users</Link>
                         </div>
                     </div>
                 </li>
@@ -96,19 +96,19 @@ function Sidebar() {
                         </div>
                     </div>
                 </li>
-                 {/* <li className="nav-item">
+                <li className="nav-item">
                     <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBank"
                         aria-expanded="true" aria-controls="collapseBank">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Bank Detail</span>
+                        <span>Bank Details</span>
                     </a>
                     <div id="collapseBank" className="collapse" aria-labelledby="headingBank" data-parent="#accordionSidebar">
                         <div className="bg-white py-2 collapse-inner rounded">
-                            <Link className="collapse-item" to="/admin-all-bank-details">All Bank Detail</Link>
-                            <Link className="collapse-item" to="/admin-bank-details">Add Bank Detail</Link>
+                            <Link className="collapse-item" to="/withdrawal-requests">Withdrawal Requests</Link>
+                            <Link className="collapse-item" to="/admin-bank-details">Transaction History</Link>
                         </div>
                     </div>
-                </li> */}
+                </li>
                 {/* <!-- Divider --> */}
                 <hr className="sidebar-divider d-none d-md-block" />
 

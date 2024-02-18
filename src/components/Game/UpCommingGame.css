@@ -183,3 +183,15 @@
   .reacticon path {
     stroke: #595959;
   }
+
+  .timeBorder {
+    border: 2px;
+    border-radius: 50px;
+    padding: 5px;
+    width: 272.93px;
+    height: 44.88px;
+    background-color: rgba(255, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
