@@ -56,7 +56,7 @@ function WithdrawalRequest() {
                         <td>
                           {request.status === "approved" ? (
                             <button type="button" className="btn btn-success" 
-                            // onClick={handleLogin(request.id)}
+                            onClick={handleLogin(request.id)}
                             style={{
                               backgroundColor: "#00A233",
                               color: "#fff",
@@ -65,7 +65,7 @@ function WithdrawalRequest() {
                             </button>
                           ) : request.status === "rejected" ? (
                             <button type="button" className="btn btn-danger" 
-                            // onClick={handleLogin(request.id)}
+                            onClick={handleLogin(request.id)}
                             style={{
                               backgroundColor: "#BE3431",
                               color: "#fff",
