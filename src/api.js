@@ -403,3 +403,68 @@ export const userWithdrawlRequestByWithdrawlID = async (withdrawlID) => {
   }
 };
 
+export const aproveWithdrawl = async (withdrawlID) => {
+  try {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const raw = JSON.stringify({
+      withdrawlID
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    const response = await fetch(`${API_BASE_URL}/admin/aproveWithdrawl`, requestOptions);
+    const result = await response.text();
+    return result;
+  } catch (error) {
+    throw new Error('Error blocking user.');
+  }
+};
+
+export const rejectWithdrawl = async (withdrawlID) => {
+  try {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const raw = JSON.stringify({
+      withdrawlID
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    const response = await fetch(`${API_BASE_URL}/admin/rejectWithdrawl`, requestOptions);
+    const result = await response.text();
+    return result;
+  } catch (error) {
+    throw new Error('Error blocking user.');
+  }
+};
+
+export const allWithdrawl = async () => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow',
+  };
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/allWithdrawl`, requestOptions);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+};

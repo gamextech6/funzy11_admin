@@ -42,32 +42,29 @@ function AllUser() {
       <body id="page-top">
         <div id="wrapper">
           <Sidebar />
-          <div id="content-wrapper" className="d-flex flex-column">
+          <div id="content-wrapper" className="d-flex mb-4 flex-column">
             <div id="content">
-              <Header />
-              <div className="container">
+            <div class="card shadow">
+                <div class="card-body">
+                  <h3 className="pl-3">All Users List</h3>
+                </div>
+              </div>
+              <div className="container text-center p-5">
                 <div className="row">
                   <div className='col-lg-12 mb-4 col-sm-12'>
                     <div className="table-container" style={{ overflowX: 'auto' }}>
-                      <div className="row">
-                        <div className="col">
-                          <h5 className="pb-2 mb-0">All Users List</h5>
-                        </div>
-                      </div>
                       <div className="d-flex text-muted">
                         <table className="table">
                           <thead>
                             <tr>
-                              {/* <th>User name</th> */}
-                              {/* <th>Name</th> */}
                               <th>Phone No.</th>
                               <th>Balance</th>
-                              <th></th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
                             {userData.map((row) => (
-                              <tr key={row.id}>
+                              <tr  key={row.id}>
                                 <td><Link to={`/user-details/${row.phoneNumber}`}>{row.phoneNumber}</Link></td>
                                 <td>{row.balance}</td>
                                 <td>{row.blocked ? (

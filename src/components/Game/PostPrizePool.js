@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../comman/Sidebar";
-import Header from "../comman/Header";
 import "./UpCommingGame.css";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   postPrizePool,
   fetchPoolContestData,
@@ -14,6 +13,20 @@ import Modal from "react-modal";
 Modal.setAppElement("#root");
 
 function PostPrizePool() {
+  const [matchData, setMatchData] = useState({});
+  const location = useLocation();
+  console.log(location.state.teama.logo_url);
+  localStorage.setItem("teamaLogo", location.state?.teama.logo_url);
+  localStorage.setItem("teamaName", location.state?.teama.short_name);
+  localStorage.setItem("startTime", location.state?.date_start_ist);
+  localStorage.setItem("teambLogo", location.state?.teamb.logo_url);
+  localStorage.setItem("teambName", location.state?.teamb.short_name);
+  useEffect(() => {
+    setMatchData(location.state);
+  }, [location.state]);
+
+
+
   const { matchId } = useParams();
   const [formData, setFormData] = useState({
     prizePool: "",
@@ -23,7 +36,7 @@ function PostPrizePool() {
   });
   const [poolData, setPoolData] = useState(null);
 
-  const [ediFormData, setEditFormData] = useState({
+  const [editFormData, setEditFormData] = useState({
     prizePool: "",
     entryFee: "",
     totalSpots: "",
@@ -41,7 +54,7 @@ function PostPrizePool() {
 
   const deleteContest = async (contestId) => {
     try {
-      const result = await deletePoolContest(contestId);
+      await deletePoolContest(contestId);
       window.location.reload();
     } catch (error) {
       console.error(error);
@@ -49,6 +62,7 @@ function PostPrizePool() {
   };
 
   const navigateToOtherPage = async (contestId) => {
+    // localStorage
     window.location.href = `/add-rank-price/${contestId}`;
   };
 
@@ -105,6 +119,8 @@ function PostPrizePool() {
     }
   };
 
+  console.log(matchData);
+
   const closeModal = () => {
     // Close the modal and reset the API response
     setIsModalOpen(false);
@@ -123,21 +139,30 @@ function PostPrizePool() {
                   <h4 className="pl-3">Post Poll Prize</h4>
                 </div>
               </div>
-              <div className="container-fluid p-2">
+              <div className="container-fluid p-4">
                 <div className="row">
                   <div className="col-lg-12 mb-4 col-sm-12">
                     <div className="card shadow p-3">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <img alt="" width="70" />
-                        <h5 className="card-title mb-0">teama_s_n</h5>
-                        <h5 className="timeBorder time text-danger pt-3">
-                          date Time
+                      <div className="d-flex justify-content-between align-items-center ml-5 mr-5">
+                        <img
+                          src={matchData?.teama?.logo_url}
+                          alt=""
+                          width="70"
+                        />
+                        <h5 className="card-title mb-0">
+                          {matchData?.teama?.short_name}
                         </h5>
-                        <h5 className="card-title mb-0">teamb_s_n</h5>
-                        <img alt="" width="70" />
-                        <Link className="btn btn-success">
-                          List of Posted Pool Prize
-                        </Link>
+                        <h5 className="timeBorder time text-danger pt-3">
+                          {matchData?.date_start_ist}
+                        </h5>
+                        <h5 className="card-title mb-0">
+                          {matchData?.teamb?.short_name}
+                        </h5>
+                        <img
+                          src={matchData?.teamb?.logo_url}
+                          alt=""
+                          width="70"
+                        />
                       </div>
                     </div>
                   </div>
@@ -323,24 +348,26 @@ function PostPrizePool() {
                                     <div className="d-flex justify-content-between align-items-center mt-4">
                                       <button
                                         type="button"
-                                        className="btn btn-danger mr-5"
+                                        className="btn mr-5"
+                                        style={{
+                                          backgroundColor: "#BE3431",
+                                          color: "#fff",
+                                        }}
                                         onClick={() => deleteContest(pool._id)}
                                       >
                                         Delete contest
                                       </button>
-                                      <button
-                                        type="button"
+                                      <Link
+                                        to={`/add-rank-price/${pool._id}`}
+                                        state={pool}
                                         className="btn"
                                         style={{
                                           backgroundColor: "#924ACD",
                                           color: "#fff",
                                         }}
-                                        onClick={() =>
-                                          navigateToOtherPage(pool._id)
-                                        }
                                       >
                                         Rank & Prize List
-                                      </button>
+                                      </Link>
                                     </div>
                                   </div>
                                 </div>

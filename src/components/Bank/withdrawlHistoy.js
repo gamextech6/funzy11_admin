@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import { Link } from "react-router-dom";
-import { userWithdrawlRequest, rejectWithdrawl } from "../../api";
+import { allWithdrawl } from "../../api";
 
 function WithdrawalRequest() {
   const [requestData, setRequestData] = useState([]);
@@ -9,9 +9,9 @@ function WithdrawalRequest() {
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {
-        const result = await userWithdrawlRequest();
-        console.log(result.requests);
-        setRequestData(result.requests);
+        const result = await allWithdrawl();
+        console.log(result?.withdrawlList);
+        setRequestData(result?.withdrawlList);
       } catch (error) {
         // Handle errors
       }
@@ -19,14 +19,6 @@ function WithdrawalRequest() {
 
     fetchDataFromApi();
   }, []);
-  const handleRejectWithdrawl = async (withdrawlID) => {
-    try {
-      await rejectWithdrawl(withdrawlID);
-      window.location.reload();
-    } catch (error) {
-      console.error('Error Aprove Withdrawl:', error);
-    }
-  };
 
   return (
     <div>
@@ -47,8 +39,7 @@ function WithdrawalRequest() {
                       <th>Phone Number</th>
                       <th>Available Balance</th>
                       <th>Requested Amount</th>
-                      <th>Reject</th>
-                      <th>Approve</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,20 +49,23 @@ function WithdrawalRequest() {
                         <td>{request.balance}</td>
                         <td>{request.amount}</td>
                         <td>
-                          <Link
-                            onClick={() => handleRejectWithdrawl(requestData?._id)}
-                            className="btn btn-danger"
-                          >
-                            Reject
-                          </Link>
-                        </td>
-                        <td>
-                          <Link
-                            to={`/withdrawal-requests-detail/${request.id}`}
-                            className="btn btn-success"
-                          >
-                            Approve
-                          </Link>
+                          {request.status === "approved" ? (
+                            <button type="button" className="btn btn-success" style={{
+                              backgroundColor: "#00A233",
+                              color: "#fff",
+                            }}>
+                              Approved
+                            </button>
+                          ) : request.status === "rejected" ? (
+                            <button type="button" className="btn btn-danger" style={{
+                              backgroundColor: "#BE3431",
+                              color: "#fff",
+                            }}>
+                              Rejected
+                            </button>
+                          ) : (
+                            <span>{request.status}</span>
+                          )}
                         </td>
                       </tr>
                     ))}

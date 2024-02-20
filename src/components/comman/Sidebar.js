@@ -32,12 +32,12 @@ function Sidebar() {
                 {/*  <!-- Sidebar - Brand --> */}
                 <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                     <div className="sidebar-brand-icon">
-                        <img src={logo} alt="Logo" style={{ width: "30px", height: "30px" }} />
+                        <img src={logo} alt="Logo" style={{ width: "40px", height: "40px" }} />
                     </div>
-                    <div className="sidebar-brand-text mx-3">Funzy</div>
-                    <div className="text-center d-none d-md-inline">
+                    <div className="sidebar-brand-text mx-3 mt-2"><h3><b>Funzy</b></h3></div>
+                    {/* <div className="text-center d-none d-md-inline">
                         <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
-                    </div>
+                    </div> */}
                 </a>
             
                 <hr className="sidebar-divider my-0" />
@@ -105,7 +105,7 @@ function Sidebar() {
                     <div id="collapseBank" className="collapse" aria-labelledby="headingBank" data-parent="#accordionSidebar">
                         <div className="bg-white py-2 collapse-inner rounded">
                             <Link className="collapse-item" to="/withdrawal-requests">Withdrawal Requests</Link>
-                            <Link className="collapse-item" to="/admin-bank-details">Transaction History</Link>
+                            <Link className="collapse-item" to="/transaction-history">Transaction History</Link>
                         </div>
                     </div>
                 </li>

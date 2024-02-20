@@ -1,28 +1,50 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import { Link } from "react-router-dom";
-import { userWithdrawlRequestByWithdrawlID } from "../../api";
+import { userWithdrawlRequestByWithdrawlID, aproveWithdrawl, rejectWithdrawl } from "../../api";
+import { useParams } from "react-router-dom";
+
+
 
 function WithdrawalRequest() {
-  const [requestData, setRequestData] = useState([]);
-  const [balance, setBalance] = useState([]);
-
+  const { withdrawlID } = useParams();
+  const [requestData, setRequestData] = useState({});
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {
         const result = await userWithdrawlRequestByWithdrawlID(withdrawlID);
-        console.log(result.withdrawalRequests);
-        setRequestData(result.withdrawalRequests);
-        setBalance(result.withdrawalRequests);
-
+        const data = JSON.parse(result); 
+        console.log(data.withdrawalRequest);
+          setRequestData(data.withdrawalRequest);
+          setBalance(data.balance || 0);
       } catch (error) {
         // Handle errors
       }
     };
 
     fetchDataFromApi();
-  }, []);
+  }, [withdrawlID]);
+
+  const handleAproveWithdrawl = async (withdrawlID) => {
+    try {
+      await aproveWithdrawl(withdrawlID);
+      window.location.reload();
+    } catch (error) {
+      console.error('Error Aprove Withdrawl:', error);
+    }
+  };
+
+  const handleRejectWithdrawl = async (withdrawlID) => {
+    try {
+      await rejectWithdrawl(withdrawlID);
+      window.location.reload();
+    } catch (error) {
+      console.error('Error Aprove Withdrawl:', error);
+    }
+  };
+
 
   return (
     <div>
@@ -36,43 +58,75 @@ function WithdrawalRequest() {
                   <h3 className="pl-3">Withdrawal Request List </h3>
                 </div>
               </div>
-              <div className="container-fluid p-5">
-                <table className="table text-center rounded p-2">
-                  <thead>
-                    <tr>
-                      <th>Phone Number</th>
-                      <th>Available Balance</th>
-                      <th>Requested Amount</th>
-                      <th>Reject</th>
-                      <th>Approve</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {requestData.map((request) => (
-                      <tr key={request.id}>
-                        <td>{request.phoneNumber}</td>
-                        <td>{request.balance}</td>
-                        <td>{request.amount}</td>
-                        <td>
+              <div className="container mt-5">
+                <div className="row">
+                  <div className="col-lg-12 mb-4 col-sm-12">
+                    <div className="card">
+                      <div className="card-body">
+                        <table className="table text-center align-items-center rounded shadow border" style={{ padding: '2rem', paddingTop: '2rem' }}>
+                          <tbody>
+                            <tr>
+                              <td className="mt-4">Phone Number</td>
+                              <td>{requestData?.phoneNumber}</td>
+                            </tr>
+                            
+                            <tr>
+                              <td>Bank Name</td>
+                              <td>{requestData?.bankName}</td>
+                            </tr>
+                            <tr>
+                              <td>Branch Name</td>
+                              <td>{requestData?.branchName}</td>
+                            </tr>
+                            <tr>
+                              <td>Account Holder Name</td>
+                              <td>{requestData?.accountHolderName}</td>
+                            </tr>
+                            <tr>
+                              <td>Bank Account Number</td>
+                              <td>{requestData?.bankAccountNumber}</td>
+                            </tr>
+                            <tr>
+                              <td>IFSC Code</td>
+                              <td>{requestData?.ifscCode}</td>
+                            </tr>
+                            <tr>
+                              <td>Withdrawal Done</td>
+                              <td>{requestData?.withdrawl_done ? "Yes" : "No"}</td>
+                            </tr>
+                            <tr>
+                              <td>Available Balance</td>
+                              <td>{balance}</td>
+                            </tr>
+                            <tr>
+                              <td>Requested Amount</td>
+                              <td>{requestData?.amount}</td>
+                            </tr>
+                            <tr>
+                              <td>  Take Action</td>
+                              <td>
                           <Link
-                            to={`/post-pool-prize/${request.id}`}
-                            className="btn btn-danger"
+                            onClick={() => handleRejectWithdrawl(requestData?._id)}
+                            className="btn btn-danger mr-3"
+                            to="/withdrawal-requests"
                           >
                             Reject
                           </Link>
-                        </td>
-                        <td>
                           <Link
-                            to={`/post-pool-prize/${request.id}`}
+                            onClick={() => handleAproveWithdrawl(requestData?._id)}
+                            to="/withdrawal-requests"
                             className="btn btn-success"
                           >
                             Approve
                           </Link>
                         </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <footer className="sticky-footer bg-white">

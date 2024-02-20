@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import Header from "../comman/Header";
 import "./UpCommingGame.css";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { fetchAllMatchData } from "../../api";
 
 function UpCommingGame() {
@@ -22,6 +22,7 @@ function UpCommingGame() {
 
     fetchDataFromApi();
   }, []);
+
   return (
     <div>
       <body id="page-top">
@@ -53,7 +54,12 @@ function UpCommingGame() {
                           <img src={match.teamb.logo_url} alt="" width="70" />
                           <Link
                             to={`/post-pool-prize/${match.match_id}`}
-                            className="btn btn-success"
+                            state={match}
+                            className="btn"
+                            style={{
+                              backgroundColor: "#16A341",
+                              color: "#fff",
+                            }}
                           >
                             Post Poll For This Match
                           </Link>

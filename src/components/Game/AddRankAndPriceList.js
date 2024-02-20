@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../comman/Sidebar";
 import Modal from "react-modal";
-import Header from "../comman/Header";
-import { useParams, Link } from "react-router-dom";
-import { addPrizeAndPoll, getRankPrice } from "../../api";
+import { useParams, Link, useLocation } from "react-router-dom";
+import { addPrizeAndPoll, getRankPrice, deletePoolContest } from "../../api";
 Modal.setAppElement("#root");
 
 function AddRankAndPriceList() {
+  const [teamaLogo, setTeamaLogo] = useState("");
+  const [teamaName, setTeamaName] = useState();
+  const [startTime, setStartTime] = useState();
+  const [teambLogo, setTeambLogo] = useState();
+  const [teambName, setTeambName] = useState();
+
+
   const { contest_id } = useParams();
   const [formData, setFormData] = useState({
     from: "",
@@ -14,16 +20,23 @@ function AddRankAndPriceList() {
     price: "",
   });
 
+  const [poolData, setPoolData] = useState("");
+  const location = useLocation();
+  useEffect(() => {
+    setPoolData(location.state);
+  }, [location.state]);
+
   const [errors, setErrors] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [rankPrize, setRankPrice] = useState(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => {
-    setIsModalOpen(false);
-    // Add any other necessary logic after closing the modal
-  };
   useEffect(() => {
+    setTeamaLogo(localStorage.getItem("teamaLogo"));
+    setTeamaName(localStorage.getItem("teamaName"));
+    setStartTime(localStorage.getItem("startTime"));
+    setTeambLogo(localStorage.getItem("teambLogo"));
+    setTeambName(localStorage.getItem("teambName"));
+
     const fetchData = async (contest_id) => {
       try {
         const result = await getRankPrice(contest_id);
@@ -34,7 +47,16 @@ function AddRankAndPriceList() {
       }
     };
     fetchData(contest_id);
-  }, []);
+  }, [contest_id]);
+
+  const deleteContest = async (contestId) => {
+    try {
+      await deletePoolContest(contestId);
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +81,7 @@ function AddRankAndPriceList() {
       // Handle the API response here if needed
       console.log("API Response:", response);
 
-      openModal();
+      setIsModalOpen(true);
 
       const updatedResult = await getRankPrice(contest_id);
       setRankPrice(updatedResult);
@@ -76,6 +98,9 @@ function AddRankAndPriceList() {
     }
   };
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div>
       <body id="page-top">
@@ -88,28 +113,89 @@ function AddRankAndPriceList() {
                   <h3 className="pl-3">Add Rank And Prize</h3>
                 </div>
               </div>
-              <div className="container-fluid p-2">
+              <div className="container-fluid p-3">
                 <div className="row">
-                  <div className="col-lg-12 mb-4 col-sm-12">
-                    <div className="card shadow p-3">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <img alt="" width="70" />
-                        <h5 className="card-title mb-0">teama_s_n</h5>
+                  <div className="col-lg-12 mb-2 col-sm-12">
+                    <div className="card shadow p-3 mr-3 ml-3">
+                      <div className="d-flex justify-content-between align-items-center ml-4 mr-4">
+                        <img src={teamaLogo} alt="" width="70" />
+                        <h5 className="card-title mb-0">{teamaName}</h5>
                         <h5 className="timeBorder time text-danger pt-3">
-                          date Time
+                          {startTime}
                         </h5>
-                        <h5 className="card-title mb-0">teamb_s_n</h5>
-                        <img alt="" width="70" />
-                        <Link className="btn btn-success">
-                          Add Another Pool Prize
-                        </Link>
+                        <h5 className="card-title mb-0">{teambName}</h5>
+                        <img src={teambLogo} alt="" width="70" />
+                        {/* <Link
+                          to={ `/post-pool-prize/${poolData.match_id}` }
+                          className="btn"
+                          style={{
+                            backgroundColor: "#16A341",
+                            color: "#fff",
+                          }}
+                        >
+                          Post Poll For This Match
+                        </Link> */}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <p className="text-center">card for pool</p>
+              <div className="container-fluid p-3">
+                <div className="row">
+                  <div className="col-lg-12 mb-2 col-sm-12">
+                    <div className="card shadow p-3 mr-3 ml-3">
+                      <div className="d-flex justify-content-between align-items-center rounded ml-4 mr-4">
+                        <h5 className="card-title text-center m-2">
+                          <div className="pb-2">Match ID</div>
+                          {poolData.match_id}
+                        </h5>
+                        <h5 className="card-title text-center mb-0">
+                          <div className="pb-2">Entry Fee</div>
+                          {poolData.entry_fee}
+                        </h5>
+                        <h5 className="card-title text-center mb-0">
+                          <div className="pb-2">Total Price</div>
+                          {poolData.price_pool}
+                        </h5>
+                        <h5 className="card-title text-center mb-0">
+                          <div className="pb-2">Total Spot</div>
+                          {poolData.total_spots}
+                        </h5>
+                        <h5 className="card-title text-center mb-0">
+                          <div className="pb-2">Winning Spot</div>
+                          {poolData.winning_spots}
+                        </h5>
+                        <h5 className="card-title text-center mb-0">
+                          <div className="pb-2">Done Spot</div>
+                          {poolData.done_spots}
+                        </h5>
+                        {/* <button
+                          type="button"
+                          className="btn"
+                          style={{
+                            backgroundColor: "#BE3431",
+                            color: "#fff",
+                          }}
+                          onClick={() => deleteContest(poolData._id)}
+                        >
+                          Delete contest
+                        </button> */}
+                        {/* <Link
+                          className="btn btn-success"
+                          style={{
+                            backgroundColor: "#924ACD",
+                            color: "#fff",
+                          }}
+                          disable
+                        >
+                          Edit
+                        </Link> */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div className="container-fluid">
                 <div className="row">
@@ -216,19 +302,16 @@ function AddRankAndPriceList() {
                             </form>
                           </div>
                           <div className="col-lg-4 mb-4 col-sm-12">
-                            <div className="card shadow">
+                            <div className="card shadow text-center">
                               <div
                                 className="card-body p-3"
                                 style={{
                                   backgroundColor: "rgba(0, 0, 0, 0.05)",
                                 }}
                               >
-                                <p className="card-title pb-2 mb-0">
-                                  List Of Rank And Prize
-                                </p>
                                 <div>
                                   <table
-                                    className="table"
+                                    className="table rounded "
                                     style={{
                                       backgroundColor: "rgba(0, 0, 0, 0.05)",
                                     }}
@@ -239,7 +322,7 @@ function AddRankAndPriceList() {
                                         <th>Prize</th>
                                       </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody className="rounded">
                                       {rankPrize && rankPrize.data ? (
                                         Object.entries(rankPrize.data).map(
                                           ([rank, price]) => (
@@ -249,6 +332,7 @@ function AddRankAndPriceList() {
                                                 backgroundColor:
                                                   "rgba(0, 0, 0, 0.05)",
                                               }}
+                                              className="rounded"
                                             >
                                               <td>{rank}</td>
                                               <td>₹{price}</td>

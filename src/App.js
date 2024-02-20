@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +19,8 @@ import NotificationByPhonezNo from "./components/notification/NotificationByPhon
 import ListOfAllNotification from "./components/notification/ListOfAllNotification";
 import ListOfAllnotificationOfSpecificUser from "./components/notification/ListOfAllnotificationOfSpecificUser";
 import WithdrawalRequest from "./components/Bank/WithdrawlRequest";
+import WithdrawalRequestDetail from "./components/Bank/WithdrawlRequestDetail"; 
+import WithdrawlHistoy from "./components/Bank/withdrawlHistoy";
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
         <Route path="/list-of-all-notification" element={<ListOfAllNotification/>} />
         <Route path="/list-of-all-notification-specific-user" element={<ListOfAllnotificationOfSpecificUser/>} />
         <Route path="/withdrawal-requests" element={<WithdrawalRequest/>} />
+        <Route path="/withdrawal-requests-detail/:withdrawlID" element={<WithdrawalRequestDetail/>} />
+        <Route path="/transaction-history" element={<WithdrawlHistoy/>} />
+
         <Route path="demo" element={<Dashboards />} />
       </Routes>
     </BrowserRouter>
