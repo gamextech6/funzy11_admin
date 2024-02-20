@@ -43,19 +43,11 @@ function Sidebar() {
                 <hr className="sidebar-divider my-0" />
 
                 <li className="nav-item active">
-                    <a className="nav-link" href="/dashboard">
+                    <Link className="nav-link" to="/dashboard">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
+                        <span>Dashboard</span></Link>
                 </li>
-
                 <hr className="sidebar-divider" />
-
-                {/* <!-- Nav Item - Charts --> */}
-                {/* <li className="nav-item">
-                    <Link className="nav-link" to="/all-user">
-                        <i className="fas fa-fw fa-chart-area"></i>
-                        <span>All User</span></Link>
-                </li> */}
                 <li className="nav-item colors">
                     <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
                         aria-expanded="true" aria-controls="collapseUser">

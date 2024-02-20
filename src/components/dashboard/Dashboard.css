@@ -43,6 +43,10 @@
     font-size: 35px;
 }
 
+.vertical-divider {
+    border-left: 1px solid #ccc; /* Adjust the color and thickness as needed */
+    height: 100%; /* Adjust the height of the divider */
+  }
 
 @media (max-width: 450px) {
     .hide-for-small-screen{

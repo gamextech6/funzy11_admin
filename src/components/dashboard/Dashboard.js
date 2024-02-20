@@ -27,143 +27,84 @@ function Dashboard() {
                     <Sidebar />
                     <div id="content-wrapper" className="d-flex flex-column">
                         <div id="content">
-                            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                                <button
-                                    id="sidebarToggleTop"
-                                    className="btn btn-link d-md-none rounded-circle mr-3 hide-for-small-screen   "
-                                >
-                                    <i className="fa fa-bars"></i>
-                                </button>
+                            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style={{height:'80px'}}>
                                 <ul className="navbar-nav text-black">
-                                    <h4 className='ml-2'>Hello, Welcome to Funzy Dashboard</h4>
+                                    <h4 className='ml-2' style={{ fontFamily: "Poppins", fontSize: "30px", fontWeight: "400" }}>Hello, Welcome to Funzy Dashboard</h4>
                                 </ul>
                             </nav>
                             <div className="container-fluid">
                                 <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 className="h5 mb-0 text-gray-800">User Details</h1>
+                                    <h1 className="h5 mb-0 text-gray-800" style={{ fontFamily: "Poppins", fontSize: "25px", fontWeight: "400" }}>User Details</h1>
                                 </div>
                                 <div className="row">
-                                    <div className="col-xl-3 col-md-6 mb-4">
+                                    <div className="col-xl-9 col-md-6 mb-4">
                                         <div className="card shadow h-100 py-2">
-                                            <div className="card-body">
-                                                <div className="row no-gutters align-items-center">
-                                                    <div className="col mr-2 align-items-center">
-                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{totalUser}</div>
-                                                        <div className="text-xs font-weight-bold text-uppercase mb-1">
-                                                            Total no. of user</div>
-                                                    </div>
+                                            <div className='row'>
+                                                <div className="col-xl-1 col-md-1 mb-2 mt-2 text-center">
+                                                    {/* <div className="vertical-divider"></div> */}
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-xl-3 col-md-6 mb-4">
-                                        <div className="card shadow h-100 py-2">
-                                            <div className="card-body">
-                                                <div className="row no-gutters align-items-center">
-                                                    <div className="col mr-2">
-                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{totalActiveUser}</div>
-                                                        <div className="text-xs font-weight-bold text-uppercase mb-1">
-                                                            Tatal no. of Active User</div>
-                                                    </div>
+                                                <div className="col-xl-3 col-md-2 mb-2 mt-2 text-center">
+                                                    <div style={{fontFamily:"Poppins", fontSize: "25px", fontWeight: "600"}}>{totalUser}</div>
+                                                    <div style={{fontFamily:"Poppins", fontSize: "18px", fontWeight: "400", color:"gray"}}>Total No Of Users</div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-xl-3 col-md-6 mb-4">
-                                        <div className="card shadow h-100 py-2">
-                                            <div className="card-body">
-                                                <div className="row no-gutters align-items-center">
-                                                    <div className="col mr-2">
-                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{totalBlockUser}</div>
-                                                        <div className="text-xs font-weight-bold text-uppercase mb-1">
-                                                            Total no. of Blocked User</div>
-                                                    </div>
+                                                <div className="col-xl-1 col-md-1 mb-2 mt-2 text-center">
+                                                    <div className="vertical-divider"></div>
+                                                </div>
+
+                                                <div className="col-xl-3 col-md-3 mb-2 text-center mt-2">
+                                                    <div style={{fontFamily:"Poppins", fontSize: "25px", fontWeight: "600"}}>{totalActiveUser}</div>
+                                                    <div style={{fontFamily:"Poppins", fontSize: "18px", fontWeight: "400", color:"gray"}}>Active Users</div>
+                                                </div>
+                                                <div className="col-xl-1 col-md-1 mb-2 mt-2 text-center">
+                                                    <div className="vertical-divider"></div>
+                                                </div>
+                                                <div className="col-xl-3 col-md-3 mb-2 text-center mt-2">
+                                                    <div style={{fontFamily:"Poppins", fontSize: "25px", fontWeight: "600"}}>{totalBlockUser}</div>
+                                                    <div style={{fontFamily:"Poppins", fontSize: "18px", fontWeight: "400", color:"gray"}}>Blocked Users</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 className="h5 mb-0 text-gray-800">Earnings</h1>
+                                    <h1 className="h5 mb-0 text-gray-800" style={{ fontFamily: "poppins", fontSize: "25px", fontWeight: "400" }}>Earnings</h1>
                                 </div>
                                 <div className="row">
-                                    <div className="col-xl-3 col-md-6 mb-4">
+                                <div className="col-xl-12 col-md-6 mb-4">
                                         <div className="card shadow h-100 py-2">
-                                            <div className="card-body">
-                                                <div className="row no-gutters align-items-center">
-                                                    <div className="col mr-2">
-                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                                        <div className="text-xs font-weight-bold text-uppercase mb-1">
-                                                            Earnings (Monthly)</div>
-                                                    </div>
+                                            <div className='row'>
+                                            <div className="col-xl-1 col-md-4 mb-4 mt-2 text-center align-items-center">
+                                                    {/* <div className="vertical-divider"></div> */}
+                                                </div>
+                                                <div className="col-xl-2 col-md-2 mb-2 mt-2 text-center">
+                                                    <div style={{fontFamily:"Poppins", fontSize: "25px", fontWeight: "600"}}>5K</div>
+                                                    <div  style={{fontFamily:"Poppins", fontSize: "18px", fontWeight: "400", color:"gray"}}>Today Earning</div>
+                                                </div>
+                                                <div className="col-xl-1 col-md-1 mb-2 mt-2 text-center">
+                                                    <div className="vertical-divider"></div>
+                                                </div>
+
+                                                <div className="col-xl-2 col-md-2 mb-2 text-center mt-2">
+                                                    <div style={{fontFamily:"Poppins", fontSize: "25px", fontWeight: "600"}}>15K</div>
+                                                    <div  style={{fontFamily:"Poppins", fontSize: "18px", fontWeight: "400", color:"gray"}}>Weekly Earning</div>
+                                                </div>
+                                                <div className="col-xl-1 col-md-1 mb-2 mt-2 text-center">
+                                                    <div className="vertical-divider"></div>
+                                                </div>
+                                                <div className="col-xl-2 col-md-2 mb-2 text-center mt-2">
+                                                    <div style={{fontFamily:"Poppins", fontSize: "25px", fontWeight: "600"}}>40K</div>
+                                                    <div  style={{fontFamily:"Poppins", fontSize: "18px", fontWeight: "400", color:"gray"}}>Monthly Earning</div>
+                                                </div>
+                                                <div className="col-xl-1 col-md-1 mb-2 mt-2 text-center">
+                                                    <div className="vertical-divider"></div>
+                                                </div>
+                                                <div className="col-xl-2 col-md-2 mb-2 text-center mt-2">
+                                                    <div style={{fontFamily:"Poppins", fontSize: "25px", fontWeight: "600"}}>215K</div>
+                                                    <div  style={{fontFamily:"Poppins", fontSize: "18px", fontWeight: "400", color:"gray"}}>Annual Earning</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-xl-3 col-md-6 mb-4">
-                                        <div className="card shadow h-100 py-2">
-                                            <div className="card-body">
-                                                <div className="row no-gutters align-items-center">
-                                                    <div className="col mr-2">
-                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                                        <div className="text-xs font-weight-bold text-uppercase mb-1">
-                                                            Earnings (Annual)</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-xl-3 col-md-6 mb-4">
-                                        <div className="card shadow h-100 py-2">
-                                            <div className="card-body">
-                                                <div className="row no-gutters align-items-center">
-                                                    <div className="col mr-2">
-                                                    <div className="row no-gutters align-items-center">
-                                                            <div className="col-auto">
-                                                                <div className="h5 mb-0 ml-2 font-weight-bold text-gray-800">$15,000</div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="text-xs font-weight-bold text-uppercase mb-1">Earnings (Weak)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-xl-3 col-md-6 mb-4">
-                                        <div className="card shadow h-100 py-2">
-                                            <div className="card-body">
-                                                <div className="row no-gutters align-items-center">
-                                                    <div className="col mr-2">
-                                                    <div className="row no-gutters align-items-center">
-                                                            <div className="col-auto">
-                                                                <div className="h5 mb-0 ml-2 font-weight-bold text-gray-800">$5,000</div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="text-xs font-weight-bold text-uppercase mb-1">Earnings (Today)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* <div className="col-xl-3 col-md-6 mb-4">
-                                        <div className="card shadow h-100 py-2">
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <div className="col mr-2">
-                                                    <div className="row">
-                                                            <div className="col-auto text-center">
-                                                                <div className="h5 mb-0 font-weight-bold text-gray-800" style={{justifyContent:"space-between"}}>$5,000</div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="text-xs font-weight-bold text-uppercase mb-1">Earnings (Today)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
                                 </div>
                             </div>
                         </div>
