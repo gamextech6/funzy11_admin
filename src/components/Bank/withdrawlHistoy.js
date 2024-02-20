@@ -20,6 +20,11 @@ function WithdrawalRequest() {
     fetchDataFromApi();
   }, []);
 
+  const handleLogin = (id) => {
+    console.log(id)
+    window.location.href = `/withdrawal-requests-detail/$id`;
+  };
+
   return (
     <div>
       <body id="page-top">
@@ -50,14 +55,18 @@ function WithdrawalRequest() {
                         <td>{request.amount}</td>
                         <td>
                           {request.status === "approved" ? (
-                            <button type="button" className="btn btn-success" style={{
+                            <button type="button" className="btn btn-success" 
+                            // onClick={handleLogin(request.id)}
+                            style={{
                               backgroundColor: "#00A233",
                               color: "#fff",
                             }}>
                               Approved
                             </button>
                           ) : request.status === "rejected" ? (
-                            <button type="button" className="btn btn-danger" style={{
+                            <button type="button" className="btn btn-danger" 
+                            // onClick={handleLogin(request.id)}
+                            style={{
                               backgroundColor: "#BE3431",
                               color: "#fff",
                             }}>

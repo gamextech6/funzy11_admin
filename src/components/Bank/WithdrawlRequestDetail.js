@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import { Link } from "react-router-dom";
-import { userWithdrawlRequestByWithdrawlID, aproveWithdrawl, rejectWithdrawl } from "../../api";
+import {
+  userWithdrawlRequestByWithdrawlID,
+  aproveWithdrawl,
+  rejectWithdrawl,
+} from "../../api";
 import { useParams } from "react-router-dom";
-
-
 
 function WithdrawalRequest() {
   const { withdrawlID } = useParams();
@@ -15,10 +17,10 @@ function WithdrawalRequest() {
     const fetchDataFromApi = async () => {
       try {
         const result = await userWithdrawlRequestByWithdrawlID(withdrawlID);
-        const data = JSON.parse(result); 
+        const data = JSON.parse(result);
         console.log(data.withdrawalRequest);
-          setRequestData(data.withdrawalRequest);
-          setBalance(data.balance || 0);
+        setRequestData(data.withdrawalRequest);
+        setBalance(data.balance || 0);
       } catch (error) {
         // Handle errors
       }
@@ -32,7 +34,7 @@ function WithdrawalRequest() {
       await aproveWithdrawl(withdrawlID);
       window.location.reload();
     } catch (error) {
-      console.error('Error Aprove Withdrawl:', error);
+      console.error("Error Aprove Withdrawl:", error);
     }
   };
 
@@ -41,10 +43,9 @@ function WithdrawalRequest() {
       await rejectWithdrawl(withdrawlID);
       window.location.reload();
     } catch (error) {
-      console.error('Error Aprove Withdrawl:', error);
+      console.error("Error Aprove Withdrawl:", error);
     }
   };
-
 
   return (
     <div>
@@ -63,13 +64,16 @@ function WithdrawalRequest() {
                   <div className="col-lg-12 mb-4 col-sm-12">
                     <div className="card">
                       <div className="card-body">
-                        <table className="table text-center align-items-center rounded shadow border" style={{ padding: '2rem', paddingTop: '2rem' }}>
+                        <table
+                          className="table text-center align-items-center rounded shadow border"
+                          style={{ padding: "2rem", paddingTop: "2rem" }}
+                        >
                           <tbody>
                             <tr>
                               <td className="mt-4">Phone Number</td>
                               <td>{requestData?.phoneNumber}</td>
                             </tr>
-                            
+
                             <tr>
                               <td>Bank Name</td>
                               <td>{requestData?.bankName}</td>
@@ -92,7 +96,9 @@ function WithdrawalRequest() {
                             </tr>
                             <tr>
                               <td>Withdrawal Done</td>
-                              <td>{requestData?.withdrawl_done ? "Yes" : "No"}</td>
+                              <td>
+                                {requestData?.withdrawl_done ? "Yes" : "No"}
+                              </td>
                             </tr>
                             <tr>
                               <td>Available Balance</td>
@@ -103,23 +109,77 @@ function WithdrawalRequest() {
                               <td>{requestData?.amount}</td>
                             </tr>
                             <tr>
-                              <td>  Take Action</td>
+                              <td> Take Action</td>
                               <td>
-                          <Link
-                            onClick={() => handleRejectWithdrawl(requestData?._id)}
-                            className="btn btn-danger mr-3"
-                            to="/withdrawal-requests"
-                          >
-                            Reject
-                          </Link>
-                          <Link
-                            onClick={() => handleAproveWithdrawl(requestData?._id)}
-                            to="/withdrawal-requests"
-                            className="btn btn-success"
-                          >
-                            Approve
-                          </Link>
-                        </td>
+                                {requestData.status == "pending" ? (
+                                  <div>
+                                    {" "}
+                                    <Link
+                                      onClick={() =>
+                                        handleRejectWithdrawl(requestData?._id)
+                                      }
+                                      className="btn btn-danger mr-3"
+                                      to="/withdrawal-requests"
+                                    >
+                                      Reject
+                                    </Link>
+                                    <Link
+                                      onClick={() =>
+                                        handleAproveWithdrawl(requestData?._id)
+                                      }
+                                      to="/withdrawal-requests"
+                                      className="btn btn-success"
+                                    >
+                                      Approve
+                                    </Link>{" "}
+                                  </div>
+                                ) : requestData.status == "approved" ? (
+                                  <div>
+                                    {" "}
+                                    <Link
+                                      onClick={() =>
+                                        handleRejectWithdrawl(requestData?._id)
+                                      }
+                                      className="btn btn-danger mr-3 disabled"
+                                      to="/withdrawal-requests"
+                                    
+                                    >
+                                      Reject
+                                    </Link>
+                                    <Link
+                                      onClick={() =>
+                                        handleAproveWithdrawl(requestData?._id)
+                                      }
+                                      to="/withdrawal-requests"
+                                      className="btn btn-success disabled"
+                                    >
+                                      Approve
+                                    </Link>{" "}
+                                  </div>
+                                ) : (
+                                  <div>
+                                    {" "}
+                                    <Link
+                                      onClick={() =>
+                                        handleRejectWithdrawl(requestData?._id)
+                                      }
+                                      className="btn btn-danger mr-3 disabled"
+                                      to="/withdrawal-requests"
+                                    >
+                                      Reject
+                                    </Link>
+                                    <Link
+                                      onClick={() =>
+                                        handleAproveWithdrawl(requestData?._id)
+                                      }
+                                      to="/withdrawal-requests"
+                                      className="btn btn-success"
+                                    >
+                                      Approve
+                                    </Link>{" "}
+                                  </div>
+                                )}
+                              </td>
                             </tr>
                           </tbody>
                         </table>
