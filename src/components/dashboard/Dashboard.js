@@ -35,7 +35,7 @@ function Dashboard() {
                                     <i className="fa fa-bars"></i>
                                 </button>
                                 <ul className="navbar-nav text-black">
-                                    <h4>Hello, Welcome to Funzy Dashboard</h4>
+                                    <h4 className='ml-2'>Hello, Welcome to Funzy Dashboard</h4>
                                 </ul>
                             </nav>
                             <div className="container-fluid">
@@ -120,7 +120,7 @@ function Dashboard() {
                                                     <div className="col mr-2">
                                                     <div className="row no-gutters align-items-center">
                                                             <div className="col-auto">
-                                                                <div className="h5 mb-0 ml-3 font-weight-bold text-gray-800">$15,000</div>
+                                                                <div className="h5 mb-0 ml-2 font-weight-bold text-gray-800">$15,000</div>
                                                             </div>
                                                         </div>
                                                         <div className="text-xs font-weight-bold text-uppercase mb-1">Earnings (Weak)
@@ -137,7 +137,7 @@ function Dashboard() {
                                                     <div className="col mr-2">
                                                     <div className="row no-gutters align-items-center">
                                                             <div className="col-auto">
-                                                                <div className="h5 mb-0 ml-3 font-weight-bold text-gray-800">$5,000</div>
+                                                                <div className="h5 mb-0 ml-2 font-weight-bold text-gray-800">$5,000</div>
                                                             </div>
                                                         </div>
                                                         <div className="text-xs font-weight-bold text-uppercase mb-1">Earnings (Today)

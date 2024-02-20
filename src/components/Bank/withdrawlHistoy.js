@@ -34,7 +34,7 @@ function WithdrawalRequest() {
             <div id="content">
               <div class="card shadow">
                 <div class="card-body">
-                  <h3 className="pl-3">Withdrawal Request List </h3>
+                  <h3 className="pl-3">Withdrawal History </h3>
                 </div>
               </div>
               <div className="container-fluid p-5">
