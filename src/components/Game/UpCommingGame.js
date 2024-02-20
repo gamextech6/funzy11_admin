@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import Header from "../comman/Header";
 import "./UpCommingGame.css";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { fetchAllMatchData } from "../../api";
 
 function UpCommingGame() {
@@ -45,7 +45,20 @@ function UpCommingGame() {
                           <h5 className="card-title mb-0">
                             {match.teama.short_name}
                           </h5>
-                          <h5 className="timeBorder time text-danger pt-3">
+                          <h5
+                            className="time text-danger pt-3"
+                            style={{
+                              border: "2px solid rgba(255, 0, 0, 0.1)",
+                              borderRadius: "50px",
+                              padding: "5px",
+                              width: "272.93px",
+                              height: "44.88px",
+                              backgroundColor: "rgba(255, 0, 0, 0.1)",
+                              textAlign: "center",
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
                             {match.date_start_ist}
                           </h5>
                           <h5 className="card-title mb-0">
