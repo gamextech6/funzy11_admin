@@ -42,7 +42,21 @@ function LiveMatches() {
                         <div className="d-flex justify-content-between align-items-center">
                           <img src={match.teama_logo} alt="" width="70" />
                           <h5 className="card-title mb-0">{match.teama_name}</h5>
-                          <p className="timeBorder time text-danger pt-3">
+                          <p className="timeBorder time text-danger pt-3"
+                          style={{
+                            border: "2px solid rgba(255, 0, 0, 0.1)",
+                            borderRadius: "50px",
+                            padding: "5px",
+                            width: "272.93px",
+                            height: "44.88px",
+                            backgroundColor: "rgba(255, 0, 0, 0.1)",
+                            textAlign: "center",
+                            display: "flex",
+                            justifyContent: "center",
+                            paddingTop: "1%",
+                            fontSize: "12px"
+                          }}
+                          >
                             {match.startdatetime}
                           </p>
                           <h5 className="card-title mb-0">{match.teamb_name}</h5>

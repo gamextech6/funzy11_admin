@@ -57,7 +57,8 @@ function UpCommingGame() {
                               textAlign: "center",
                               display: "flex",
                               justifyContent: "center",
-                              paddingTop: "1%"
+                              paddingTop: "1%",
+                              fontSize: "12px"
                             }}
                           >
                             {match.date_start_ist}
