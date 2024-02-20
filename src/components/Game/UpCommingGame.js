@@ -46,7 +46,7 @@ function UpCommingGame() {
                             {match.teama.short_name}
                           </h5>
                           <h5
-                            className="time text-danger pt-3"
+                            className="time text-danger"
                             style={{
                               border: "2px solid rgba(255, 0, 0, 0.1)",
                               borderRadius: "50px",
@@ -57,6 +57,7 @@ function UpCommingGame() {
                               textAlign: "center",
                               display: "flex",
                               justifyContent: "center",
+                              paddingTop: "1%"
                             }}
                           >
                             {match.date_start_ist}
