@@ -22,7 +22,7 @@ function WithdrawalRequest() {
 
   const handleLogin = (id) => {
     console.log(id)
-    window.location.href = `/withdrawal-requests-detail/$id`;
+    window.location.href = `/withdrawal-requests-detail/${id}`;
   };
 
   return (
@@ -55,9 +55,8 @@ function WithdrawalRequest() {
                         <td>{request.amount}</td>
                         <td>
                           {request.status === "approved" ? (
-                            <button type="button" className="btn btn-success" 
-                            onClick={() => handleLogin(request.id)}
-
+                            <button type="button" className="btn" 
+                            onClick={() => handleLogin(request._id)}
                             style={{
                               backgroundColor: "#00A233",
                               color: "#fff",
@@ -65,8 +64,8 @@ function WithdrawalRequest() {
                               Approved
                             </button>
                           ) : request.status === "rejected" ? (
-                            <button type="button" className="btn btn-danger" 
-                            onClick={() => handleLogin(request.id)}
+                            <button type="button" className="btn" 
+                            onClick={() => handleLogin(request._id)}
 
                             style={{
                               backgroundColor: "#BE3431",

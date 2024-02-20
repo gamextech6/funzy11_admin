@@ -34,41 +34,65 @@ function WithdrawalRequest() {
         <div id="wrapper">
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
-              <div class="card shadow">
-                <div class="card-body">
-                  <h3 className="pl-3">Withdrawal Request List </h3>
-                </div>
-              </div>
-              <div className="container-fluid p-5">
-                <table className="table text-center rounded p-2">
-                  <thead>
+            <div id="content" className="bg-white">
+              <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style={{height:"80px"}}>
+                <ul className="navbar-nav text-black">
+                  <p
+                    className="ml-2"
+                    style={{
+                      fontFamily: "poppins",
+                      fontSize: "28.8px",
+                      fontWeight: "400",
+                      lineHeight: "50.4px",
+                      color: "#232D42CC"
+                    }}
+                  >
+                    Withdrawal Request List
+                  </p>
+                </ul>
+              </nav>
+
+             <div className="container mt-5">
+              <div className="row">
+              <div className="col-lg-12 mb-4 col-sm-12">
+                <div className="card-body">
+                <table className="table text-center align-items-center rounded shadow border"
+                          style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>
+                  <thead style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}>
                     <tr>
-                      <th>Phone Number</th>
-                      <th>Available Balance</th>
-                      <th>Requested Amount</th>
-                      <th>Reject</th>
-                      <th>Approve</th>
+                      <th style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Phone Number</th>
+                      <th style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Available Balance</th>
+                      <th style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Requested Amount</th>
+                      <th style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Reject</th>
+                      <th style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Approve</th>
                     </tr>
                   </thead>
                   <tbody>
                     {requestData.map((request) => (
                       <tr key={request.id}>
-                        <td>{request.phoneNumber}</td>
-                        <td>{request.balance}</td>
-                        <td>{request.amount}</td>
-                        <td>
+                        <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>+91 {request.phoneNumber}</td>
+                        <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{request.balance}</td>
+                        <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{request.amount}</td>
+                        <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>
                           <Link
                             onClick={() => handleRejectWithdrawl(requestData?._id)}
-                            className="btn btn-danger"
+                            className="btn btn-danger ml-3 mr-3"
+                            // style={{
+                            //   backgroundColor: "#BE3431",
+                            //   color: "#fff",
+                            // }}
                           >
                             Reject
                           </Link>
                         </td>
-                        <td>
+                        <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>
                           <Link
                             to={`/withdrawal-requests-detail/${request.id}`}
                             className="btn btn-success"
+                            style={{
+                              backgroundColor: "#00A233",
+                              color: "#fff",
+                            }}
                           >
                             Approve
                           </Link>
@@ -77,7 +101,10 @@ function WithdrawalRequest() {
                     ))}
                   </tbody>
                 </table>
+                </div>
               </div>
+              </div>
+             </div>
             </div>
             <footer className="sticky-footer bg-white">
               <div className="container my-auto">

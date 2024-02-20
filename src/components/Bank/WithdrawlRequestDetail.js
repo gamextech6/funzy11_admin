@@ -11,7 +11,6 @@ import { useParams } from "react-router-dom";
 function WithdrawalRequest() {
   const { withdrawlID } = useParams();
   const [requestData, setRequestData] = useState({});
-  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     const fetchDataFromApi = async () => {
@@ -20,7 +19,6 @@ function WithdrawalRequest() {
         const data = JSON.parse(result);
         console.log(data.withdrawalRequest);
         setRequestData(data.withdrawalRequest);
-        setBalance(data.balance || 0);
       } catch (error) {
         // Handle errors
       }
@@ -54,72 +52,79 @@ function WithdrawalRequest() {
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
             <div id="content">
-              <div class="card shadow">
-                <div class="card-body">
-                  <h3 className="pl-3">Withdrawal Request List </h3>
-                </div>
-              </div>
+              <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style={{height:"80px"}}>
+                <ul className="navbar-nav text-black">
+                  <p
+                    className="ml-2"
+                    style={{
+                      fontFamily: "poppins",
+                      fontSize: "28.8px",
+                      fontWeight: "400",
+                      lineHeight: "50.4px",
+                      color: "#232D42CC"
+                    }}
+                  >
+                    Bank Details
+                  </p>
+                </ul>
+              </nav>
               <div className="container mt-5">
                 <div className="row">
                   <div className="col-lg-12 mb-4 col-sm-12">
-                    <div className="card">
                       <div className="card-body">
                         <table
                           className="table text-center align-items-center rounded shadow border"
-                          style={{ padding: "2rem", paddingTop: "2rem" }}
+                          style={{ padding: "1.5rem", paddingTop: "1.5rem" }}
                         >
                           <tbody>
                             <tr>
-                              <td className="mt-4">Phone Number</td>
-                              <td>{requestData?.phoneNumber}</td>
+                              <td className="mt-4" style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Phone Number</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{requestData?.phoneNumber}</td>
                             </tr>
 
                             <tr>
-                              <td>Bank Name</td>
-                              <td>{requestData?.bankName}</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Bank Name</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{requestData?.bankName}</td>
                             </tr>
                             <tr>
-                              <td>Branch Name</td>
-                              <td>{requestData?.branchName}</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Branch Name</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{requestData?.branchName}</td>
+                            </tr>
+                            <tr >
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Account Holder Name</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{requestData?.accountHolderName}</td>
                             </tr>
                             <tr>
-                              <td>Account Holder Name</td>
-                              <td>{requestData?.accountHolderName}</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Bank Account Number</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{requestData?.bankAccountNumber}</td>
                             </tr>
                             <tr>
-                              <td>Bank Account Number</td>
-                              <td>{requestData?.bankAccountNumber}</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>IFSC Code</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{requestData?.ifscCode}</td>
                             </tr>
                             <tr>
-                              <td>IFSC Code</td>
-                              <td>{requestData?.ifscCode}</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Available Balance</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{requestData?.balance}</td>
                             </tr>
                             <tr>
-                              <td>Withdrawal Done</td>
-                              <td>
-                                {requestData?.withdrawl_done ? "Yes" : "No"}
-                              </td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Requested Amount</td>
+                              <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>{requestData?.amount}</td>
                             </tr>
                             <tr>
-                              <td>Available Balance</td>
-                              <td>{balance}</td>
-                            </tr>
-                            <tr>
-                              <td>Requested Amount</td>
-                              <td>{requestData?.amount}</td>
-                            </tr>
-                            <tr>
-                              <td> Take Action</td>
-                              <td>
-                                {requestData.status == "pending" ? (
-                                  <div>
-                                    {" "}
+                              {requestData.status === "pending" ? (
+                                <>
+                                  <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Take Action</td>
+                                  <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>
                                     <Link
                                       onClick={() =>
                                         handleRejectWithdrawl(requestData?._id)
                                       }
-                                      className="btn btn-danger mr-3"
+                                      className="btn mr-4"
                                       to="/withdrawal-requests"
+                                      style={{
+                                        backgroundColor: "#BE3431",
+                                        color: "#fff",
+                                      }}
                                     >
                                       Reject
                                     </Link>
@@ -128,63 +133,59 @@ function WithdrawalRequest() {
                                         handleAproveWithdrawl(requestData?._id)
                                       }
                                       to="/withdrawal-requests"
-                                      className="btn btn-success"
+                                      className="btn mr-4"
+                                      style={{
+                                        backgroundColor: "#00A233",
+                                        color: "#fff",
+                                      }}
                                     >
                                       Approve
                                     </Link>{" "}
-                                  </div>
-                                ) : requestData.status == "approved" ? (
-                                  <div>
-                                    {" "}
-                                    <Link
-                                      onClick={() =>
-                                        handleRejectWithdrawl(requestData?._id)
-                                      }
-                                      className="btn btn-danger mr-3 disabled"
-                                      to="/withdrawal-requests"
-                                    
-                                    >
-                                      Reject
-                                    </Link>
+                                  </td>
+                                </>
+                              ) : requestData.status === "approved" ? (
+                                <>
+                                  <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Status</td>
+                                  <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>
                                     <Link
                                       onClick={() =>
                                         handleAproveWithdrawl(requestData?._id)
                                       }
                                       to="/withdrawal-requests"
-                                      className="btn btn-success disabled"
+                                      className="btn disabled"
+                                      style={{
+                                        backgroundColor: "#00A233",
+                                        color: "#fff",
+                                      }}
                                     >
-                                      Approve
+                                      Approved
                                     </Link>{" "}
-                                  </div>
-                                ) : (
-                                  <div>
-                                    {" "}
-                                    <Link
-                                      onClick={() =>
-                                        handleRejectWithdrawl(requestData?._id)
-                                      }
-                                      className="btn btn-danger mr-3 disabled"
-                                      to="/withdrawal-requests"
-                                    >
-                                      Reject
-                                    </Link>
+                                  </td>
+                                </>
+                              ) : (
+                                <>
+                                  <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>Take Action</td>
+                                  <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}>
                                     <Link
                                       onClick={() =>
                                         handleAproveWithdrawl(requestData?._id)
                                       }
                                       to="/withdrawal-requests"
-                                      className="btn btn-success"
+                                      className="btn"
+                                      style={{
+                                        backgroundColor: "#00A233",
+                                        color: "#fff",
+                                      }}
                                     >
                                       Approve
                                     </Link>{" "}
-                                  </div>
-                                )}
-                              </td>
+                                  </td>
+                                </>
+                              )}
                             </tr>
                           </tbody>
                         </table>
                       </div>
-                    </div>
                   </div>
                 </div>
               </div>
