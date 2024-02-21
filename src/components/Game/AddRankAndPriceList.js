@@ -107,13 +107,13 @@ function AddRankAndPriceList() {
         <div id="wrapper">
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
+            <div id="content bg-white">
               <div class="card shadow">
                 <div class="card-body">
                   <h3 className="pl-3">Add Rank And Prize</h3>
                 </div>
               </div>
-              <div className="container-fluid p-3">
+              <div className="container-fluid p-3 bg-white">
                 <div className="row">
                   <div className="col-lg-12 mb-2 col-sm-12">
                     <div className="card shadow p-3 mr-3 ml-3">
@@ -141,7 +141,7 @@ function AddRankAndPriceList() {
                 </div>
               </div>
 
-              <div className="container-fluid p-3">
+              <div className="container-fluid p-3 bg-white">
                 <div className="row">
                   <div className="col-lg-12 mb-2 col-sm-12">
                     <div className="card shadow p-3 mr-3 ml-3">
@@ -197,7 +197,7 @@ function AddRankAndPriceList() {
                 </div>
               </div>
 
-              <div className="container-fluid">
+              <div className="container-fluid bg-white">
                 <div className="row">
                   <div className="col-lg-12 mb-4 col-sm-12">
                     <div className="card shadow">

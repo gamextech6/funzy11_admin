@@ -42,9 +42,9 @@ function ListOfRankAndPrice() {
                 <div id="wrapper">
                     <Sidebar />
                     <div id="content-wrapper" className="d-flex flex-column">
-                        <div id="content">
+                        <div id="contentn bg-white">
                             <Header />
-                            <div className="container">
+                            <div className="container bg-white">
                                 <div className="row">
                                     <div className='col-lg-12 mb-4 col-sm-12'>
                                         <div className="table-container" style={{ overflowX: 'auto' }}>

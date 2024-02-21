@@ -26,7 +26,7 @@ function Dashboard() {
                 <div id="wrapper">
                     <Sidebar />
                     <div id="content-wrapper" className="d-flex flex-column">
-                        <div id="content">
+                        <div id="content" className='bg-white'>
                             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style={{height:'80px'}}>
                                 <ul className="navbar-nav text-black">
                                     <h4 className='ml-2' style={{ fontFamily: "Poppins", fontSize: "30px", fontWeight: "400" }}>Hello, Welcome to Funzy Dashboard</h4>

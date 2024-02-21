@@ -53,7 +53,7 @@ function NotificationByPhonezNo() {
         <div id="wrapper">
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
+            <div id="content bg-white">
               <div className="card shadow">
                 <div className="card-body row p-3">
                   <div className="col-lg-9">
@@ -70,7 +70,7 @@ function NotificationByPhonezNo() {
                 </div>
               </div>
 
-              <div className="card shadow m-5">
+              <div className="card shadow m-5 bg-white">
                 <div className="card-body">
                   <form onSubmit={handleFormSubmit}>
                     <div className="form-group mb-4">

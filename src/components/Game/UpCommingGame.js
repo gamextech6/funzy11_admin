@@ -29,13 +29,13 @@ function UpCommingGame() {
         <div id="wrapper">
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
+            <div id="content bg-white">
               <div class="card shadow">
                 <div class="card-body">
                   <h3 className="pl-3">Up Coming Match List</h3>
                 </div>
               </div>
-              <div className="container-fluid p-5">
+              <div className="container-fluid p-5 bg-white">
                 <div className="row g-4">
                   {matchData.map((match) => (
                     <div key={match.match_id} className="col-12">

@@ -133,13 +133,13 @@ function PostPrizePool() {
         <div id="wrapper">
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
+            <div id="content bg-white">
               <div class="card shadow">
                 <div class="card-body">
                   <h4 className="pl-3">Post Poll Prize</h4>
                 </div>
               </div>
-              <div className="container-fluid p-4">
+              <div className="container-fluid p-4 bg-white">
                 <div className="row">
                   <div className="col-lg-12 mb-4 col-sm-12">
                     <div className="card shadow p-3">
@@ -182,7 +182,7 @@ function PostPrizePool() {
                   </div>
                 </div>
               </div>
-              <div className="container-fluid">
+              <div className="container-fluid bg-white">
                 <div className="row">
                   <div className="col-lg-12 mb-4 col-sm-12">
                     <div className="card shadow m-2">
@@ -335,7 +335,7 @@ function PostPrizePool() {
                               <div key={pool._id} className="col-lg-6 mb-4">
                                 <div className="card shadow">
                                   <div className="card-body">
-                                    <div className="row">
+                                    <div className="row" style={{display:"flex", justifyContent:"space-around"}}>
                                       <div className="col-md-6">
                                         <p className="card-title">
                                           Match ID: {pool.match_id}
@@ -347,7 +347,7 @@ function PostPrizePool() {
                                           Done Spots: {pool.done_spots}
                                         </p>
                                       </div>
-                                      <div className="col-md-6">
+                                      <div className="col-md-6 pl-5">
                                         <p className="card-text">
                                           Total Spots: {pool.total_spots}
                                         </p>
@@ -374,7 +374,7 @@ function PostPrizePool() {
                                       <Link
                                         to={`/add-rank-price/${pool._id}`}
                                         state={pool}
-                                        className="btn"
+                                        className="btn mr-5"
                                         style={{
                                           backgroundColor: "#924ACD",
                                           color: "#fff",

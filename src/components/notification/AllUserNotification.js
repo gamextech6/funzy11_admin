@@ -64,7 +64,7 @@ function AllUserNotification() {
         <div id="wrapper">
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
+            <div id="content bg-white">
               <div className="card shadow">
                 <div className="card-body row p-3">
                   <div className="col-lg-9">
@@ -81,7 +81,7 @@ function AllUserNotification() {
                 </div>
               </div>
 
-              <div className="container-fluid">
+              <div className="container-fluid bg-white">
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="row mt-4">
