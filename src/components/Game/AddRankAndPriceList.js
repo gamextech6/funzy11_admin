@@ -12,7 +12,6 @@ function AddRankAndPriceList() {
   const [teambLogo, setTeambLogo] = useState();
   const [teambName, setTeambName] = useState();
 
-
   const { contest_id } = useParams();
   const [formData, setFormData] = useState({
     from: "",
@@ -104,28 +103,43 @@ function AddRankAndPriceList() {
   return (
     <div>
       <body id="page-top">
-        <div id="wrapper">
-          <Sidebar />
-          <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content bg-white">
-            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style={{ height: '80px' }}>
-                <ul className="navbar-nav text-black">
-                  <h4 className='ml-2' style={{ fontFamily: "Poppins", fontSize: "30px", fontWeight: "400" }}>Add Rank And Prize</h4>
-                </ul>
-              </nav>
-              <div className="container-fluid bg-white">
-                <div className="row">
-                  <div className="col-lg-12 mb-2 col-sm-12">
-                    <div className="card shadow p-3 mr-3 ml-3">
-                      <div className="d-flex justify-content-between align-items-center ml-4 mr-4">
-                        <img src={teamaLogo} alt="" width="70" />
-                        <h5 className="card-title mb-0">{teamaName}</h5>
-                        <h5 className="timeBorder time text-danger pt-3">
-                          {startTime}
-                        </h5>
-                        <h5 className="card-title mb-0">{teambName}</h5>
-                        <img src={teambLogo} alt="" width="70" />
-                        {/* <Link
+        <div id="wrapper" className="row m-0">
+          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
+            <Sidebar />
+          </div>
+          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
+            <div id="content-wrapper" className="d-flex flex-column">
+              <div id="content bg-white">
+                <nav
+                  className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                  style={{ height: "80px" }}
+                >
+                  <ul className="navbar-nav text-black">
+                    <h4
+                      className="ml-2"
+                      style={{
+                        fontFamily: "Poppins",
+                        fontSize: "30px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      Add Rank And Prize
+                    </h4>
+                  </ul>
+                </nav>
+                <div className="container-fluid bg-white">
+                  <div className="row">
+                    <div className="col-lg-12 mb-2 col-sm-12">
+                      <div className="card shadow p-3 mr-3 ml-3">
+                        <div className="d-flex justify-content-between align-items-center ml-4 mr-4">
+                          <img src={teamaLogo} alt="" width="70" />
+                          <h5 className="card-title mb-0">{teamaName}</h5>
+                          <h5 className="timeBorder time text-danger pt-3">
+                            {startTime}
+                          </h5>
+                          <h5 className="card-title mb-0">{teambName}</h5>
+                          <img src={teambLogo} alt="" width="70" />
+                          {/* <Link
                           to={ `/post-pool-prize/${poolData.match_id}` }
                           className="btn"
                           style={{
@@ -135,42 +149,42 @@ function AddRankAndPriceList() {
                         >
                           Post Poll For This Match
                         </Link> */}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="container-fluid p-3 bg-white">
-                <div className="row">
-                  <div className="col-lg-12 mb-2 col-sm-12">
-                    <div className="card shadow p-3 mr-3 ml-3">
-                      <div className="d-flex justify-content-between align-items-center rounded ml-4 mr-4">
-                        <h5 className="card-title text-center m-2">
-                          <div className="pb-2">Match ID</div>
-                          {poolData.match_id}
-                        </h5>
-                        <h5 className="card-title text-center mb-0">
-                          <div className="pb-2">Entry Fee</div>
-                          {poolData.entry_fee}
-                        </h5>
-                        <h5 className="card-title text-center mb-0">
-                          <div className="pb-2">Total Price</div>
-                          {poolData.price_pool}
-                        </h5>
-                        <h5 className="card-title text-center mb-0">
-                          <div className="pb-2">Total Spot</div>
-                          {poolData.total_spots}
-                        </h5>
-                        <h5 className="card-title text-center mb-0">
-                          <div className="pb-2">Winning Spot</div>
-                          {poolData.winning_spots}
-                        </h5>
-                        <h5 className="card-title text-center mb-0">
-                          <div className="pb-2">Done Spot</div>
-                          {poolData.done_spots}
-                        </h5>
-                        {/* <button
+                <div className="container-fluid p-3 bg-white">
+                  <div className="row">
+                    <div className="col-lg-12 mb-2 col-sm-12">
+                      <div className="card shadow p-3 mr-3 ml-3">
+                        <div className="d-flex justify-content-between align-items-center rounded ml-4 mr-4">
+                          <h5 className="card-title text-center m-2">
+                            <div className="pb-2">Match ID</div>
+                            {poolData.match_id}
+                          </h5>
+                          <h5 className="card-title text-center mb-0">
+                            <div className="pb-2">Entry Fee</div>
+                            {poolData.entry_fee}
+                          </h5>
+                          <h5 className="card-title text-center mb-0">
+                            <div className="pb-2">Total Price</div>
+                            {poolData.price_pool}
+                          </h5>
+                          <h5 className="card-title text-center mb-0">
+                            <div className="pb-2">Total Spot</div>
+                            {poolData.total_spots}
+                          </h5>
+                          <h5 className="card-title text-center mb-0">
+                            <div className="pb-2">Winning Spot</div>
+                            {poolData.winning_spots}
+                          </h5>
+                          <h5 className="card-title text-center mb-0">
+                            <div className="pb-2">Done Spot</div>
+                            {poolData.done_spots}
+                          </h5>
+                          {/* <button
                           type="button"
                           className="btn"
                           style={{
@@ -181,7 +195,7 @@ function AddRankAndPriceList() {
                         >
                           Delete contest
                         </button> */}
-                        {/* <Link
+                          {/* <Link
                           className="btn btn-success"
                           style={{
                             backgroundColor: "#924ACD",
@@ -191,169 +205,170 @@ function AddRankAndPriceList() {
                         >
                           Edit
                         </Link> */}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="container-fluid bg-white">
-                <div className="row">
-                  <div className="col-lg-12 mb-4 col-sm-12">
-                    <div className="card shadow">
-                      <div className="card-body">
-                        <div className="row">
-                          <div className="col-lg-8 mb-4 col-sm-12">
-                            <form
-                              className="login-form"
-                              onSubmit={handleFormSubmit}
-                            >
-                              <div className="form-outline mb-4">
-                                <label
-                                  className="form-label"
-                                  htmlFor="prizePool"
-                                >
-                                  Rank From
-                                </label>
-                                <input
-                                  type="text"
-                                  id="prizePool"
-                                  className={`form-control ${
-                                    errors.from ? "is-invalid" : ""
-                                  }`}
-                                  placeholder="Enter rank from"
-                                  value={formData.from}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      from: e.target.value,
-                                    })
-                                  }
-                                />
-                                {errors.from && (
-                                  <div className="invalid-feedback">
-                                    {errors.from}
-                                  </div>
-                                )}
-                              </div>
-                              <div className="form-outline mb-4">
-                                <label
-                                  className="form-label"
-                                  htmlFor="prizePool"
-                                >
-                                  Rank To
-                                </label>
-                                <input
-                                  type="text"
-                                  id="prizePool"
-                                  className={`form-control ${
-                                    errors.to ? "is-invalid" : ""
-                                  }`}
-                                  placeholder="Enter rank to"
-                                  value={formData.to}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      to: e.target.value,
-                                    })
-                                  }
-                                />
-                              </div>
-                              <div className="form-outline mb-4">
-                                <label
-                                  className="form-label"
-                                  htmlFor="entryFee"
-                                >
-                                  Price
-                                </label>
-                                <input
-                                  type="text"
-                                  id="entryFee"
-                                  className={`form-control ${
-                                    errors.price ? "is-invalid" : ""
-                                  }`}
-                                  placeholder="Enter price"
-                                  value={formData.price}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      price: e.target.value,
-                                    })
-                                  }
-                                />
-                                {errors.price && (
-                                  <div className="invalid-feedback">
-                                    {errors.price}
-                                  </div>
-                                )}
-                              </div>
-                              <div className="text-lg-start mt-4 pt-2">
-                                <button
-                                  type="submit"
-                                  className="btn btn-lg"
-                                  style={{
-                                    backgroundColor: "#924ACD",
-                                    color: "#fff",
-                                  }}
-                                >
-                                  Proceed
-                                </button>
-                              </div>
-                            </form>
-                          </div>
-                          <div className="col-lg-4 mb-4 col-sm-12">
-                            <div className="card shadow text-center">
-                              <div
-                                className="card-body p-3"
-                                style={{
-                                  backgroundColor: "rgba(0, 0, 0, 0.05)",
-                                }}
+                <div className="container-fluid bg-white">
+                  <div className="row">
+                    <div className="col-lg-12 mb-4 col-sm-12">
+                      <div className="card shadow">
+                        <div className="card-body">
+                          <div className="row">
+                            <div className="col-lg-8 mb-4 col-sm-12">
+                              <form
+                                className="login-form"
+                                onSubmit={handleFormSubmit}
                               >
-                                <div>
-                                  <table
-                                    className="table rounded "
+                                <div className="form-outline mb-4">
+                                  <label
+                                    className="form-label"
+                                    htmlFor="prizePool"
+                                  >
+                                    Rank From
+                                  </label>
+                                  <input
+                                    type="text"
+                                    id="prizePool"
+                                    className={`form-control ${
+                                      errors.from ? "is-invalid" : ""
+                                    }`}
+                                    placeholder="Enter rank from"
+                                    value={formData.from}
+                                    onChange={(e) =>
+                                      setFormData({
+                                        ...formData,
+                                        from: e.target.value,
+                                      })
+                                    }
+                                  />
+                                  {errors.from && (
+                                    <div className="invalid-feedback">
+                                      {errors.from}
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="form-outline mb-4">
+                                  <label
+                                    className="form-label"
+                                    htmlFor="prizePool"
+                                  >
+                                    Rank To
+                                  </label>
+                                  <input
+                                    type="text"
+                                    id="prizePool"
+                                    className={`form-control ${
+                                      errors.to ? "is-invalid" : ""
+                                    }`}
+                                    placeholder="Enter rank to"
+                                    value={formData.to}
+                                    onChange={(e) =>
+                                      setFormData({
+                                        ...formData,
+                                        to: e.target.value,
+                                      })
+                                    }
+                                  />
+                                </div>
+                                <div className="form-outline mb-4">
+                                  <label
+                                    className="form-label"
+                                    htmlFor="entryFee"
+                                  >
+                                    Price
+                                  </label>
+                                  <input
+                                    type="text"
+                                    id="entryFee"
+                                    className={`form-control ${
+                                      errors.price ? "is-invalid" : ""
+                                    }`}
+                                    placeholder="Enter price"
+                                    value={formData.price}
+                                    onChange={(e) =>
+                                      setFormData({
+                                        ...formData,
+                                        price: e.target.value,
+                                      })
+                                    }
+                                  />
+                                  {errors.price && (
+                                    <div className="invalid-feedback">
+                                      {errors.price}
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="text-lg-start mt-4 pt-2">
+                                  <button
+                                    type="submit"
+                                    className="btn btn-lg"
                                     style={{
-                                      backgroundColor: "rgba(0, 0, 0, 0.05)",
+                                      backgroundColor: "#924ACD",
+                                      color: "#fff",
                                     }}
                                   >
-                                    <thead>
-                                      <tr>
-                                        <th>Rank</th>
-                                        <th>Prize</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody className="rounded">
-                                      {rankPrize && rankPrize.data ? (
-                                        Object.entries(rankPrize.data).map(
-                                          ([rank, price]) => (
-                                            <tr
-                                              key={rank}
+                                    Proceed
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                            <div className="col-lg-4 mb-4 col-sm-12">
+                              <div className="card shadow text-center">
+                                <div
+                                  className="card-body p-3"
+                                  style={{
+                                    backgroundColor: "rgba(0, 0, 0, 0.05)",
+                                  }}
+                                >
+                                  <div>
+                                    <table
+                                      className="table rounded "
+                                      style={{
+                                        backgroundColor: "rgba(0, 0, 0, 0.05)",
+                                      }}
+                                    >
+                                      <thead>
+                                        <tr>
+                                          <th>Rank</th>
+                                          <th>Prize</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="rounded">
+                                        {rankPrize && rankPrize.data ? (
+                                          Object.entries(rankPrize.data).map(
+                                            ([rank, price]) => (
+                                              <tr
+                                                key={rank}
+                                                style={{
+                                                  backgroundColor:
+                                                    "rgba(0, 0, 0, 0.05)",
+                                                }}
+                                                className="rounded"
+                                              >
+                                                <td>{rank}</td>
+                                                <td>₹{price}</td>
+                                              </tr>
+                                            )
+                                          )
+                                        ) : (
+                                          <tr>
+                                            <td
+                                              colSpan="2"
                                               style={{
                                                 backgroundColor:
                                                   "rgba(0, 0, 0, 0.05)",
                                               }}
-                                              className="rounded"
                                             >
-                                              <td>{rank}</td>
-                                              <td>₹{price}</td>
-                                            </tr>
-                                          )
-                                        )
-                                      ) : (
-                                        <tr>
-                                          <td
-                                            colSpan="2"
-                                            style={{
-                                              backgroundColor:
-                                                "rgba(0, 0, 0, 0.05)",
-                                            }}
-                                          >
-                                            No data available
-                                          </td>
-                                        </tr>
-                                      )}
-                                    </tbody>
-                                  </table>
+                                              No data available
+                                            </td>
+                                          </tr>
+                                        )}
+                                      </tbody>
+                                    </table>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -364,14 +379,14 @@ function AddRankAndPriceList() {
                   </div>
                 </div>
               </div>
-            </div>
-            <footer className="sticky-footer bg-white">
-              <div className="container my-auto">
-                <div className="copyright text-center my-auto">
-                  <span>Copyright &copy; Your Website 2023</span>
+              <footer className="sticky-footer bg-white">
+                <div className="container my-auto">
+                  <div className="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2023</span>
+                  </div>
                 </div>
-              </div>
-            </footer>
+              </footer>
+            </div>
           </div>
         </div>
         <a className="scroll-to-top rounded" href="#page-top">

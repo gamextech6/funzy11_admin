@@ -43,72 +43,74 @@ function ListOfPostedPollPrize() {
   return (
     <div>
       <body id="page-top">
-        <div id="wrapper">
-          <Sidebar />
-          <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content bg-white">
-              <Header />
-              <div className="container bg-white">
-                <div className="row">
-                  <div className="col-lg-12 mb-4 col-sm-12">
-                    <div
-                      className="table-container"
-                      style={{ overflowX: "auto" }}
-                    >
-                      <div className="row">
-                        <div className="col">
-                          <h5 className="pb-2 mb-0">Posted Pool List</h5>
+        <div id="wrapper" className="row m-0">
+          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
+            <Sidebar />
+          </div>
+          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
+            <div id="content-wrapper" className="d-flex flex-column">
+              <div id="content bg-white">
+                <Header />
+                <div className="container bg-white">
+                  <div className="row">
+                    <div className="col-lg-12 mb-4 col-sm-12">
+                      <div
+                        className="table-container"
+                        style={{ overflowX: "auto" }}
+                      >
+                        <div className="row">
+                          <div className="col">
+                            <h5 className="pb-2 mb-0">Posted Pool List</h5>
+                          </div>
                         </div>
-                      </div>
-                      <hr />
-                      <div className="table-responsive">
-                        <table className="table table-bordered">
-                          <thead>
-                            <tr>
-                              <th>Match ID</th>
-                              <th>Entry Fee</th>
-                              <th>Total Spots</th>
-                              <th>Done Spots</th>
-                              <th>Price Pool</th>
-                              <th>Winning Spots</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {poolData &&
-                              poolData.map((pool) => (
-                                <tr key={pool._id}>
-                                  <td>{pool.match_id}</td>
-                                  <td>{pool.entry_fee}</td>
-                                  <td>{pool.total_spots}</td>
-                                  <td>{pool.done_spots}</td>
-                                  <td>{pool.price_pool}</td>
-                                  <td>{pool.winning_spots}</td>
-                                  <td>
-                                    <button
-                                      type="button"
-                                      className="btn btn-danger"
-                                      onClick={() =>
-                                        deleteContest(pool._id)
-                                      }
-                                    >
-                                      Delete contest
-                                    </button>
-                                  </td>
-                                  <td>
-                                    <button
-                                      type="button"
-                                      className="btn btn-success"
-                                      onClick={() =>
-                                        navigateToOtherPage(pool._id)
-                                      }
-                                    >
-                                      Add Rank & Price List
-                                    </button>
-                                  </td>
-                                </tr>
-                              ))}
-                          </tbody>
-                        </table>
+                        <hr />
+                        <div className="table-responsive">
+                          <table className="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Match ID</th>
+                                <th>Entry Fee</th>
+                                <th>Total Spots</th>
+                                <th>Done Spots</th>
+                                <th>Price Pool</th>
+                                <th>Winning Spots</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {poolData &&
+                                poolData.map((pool) => (
+                                  <tr key={pool._id}>
+                                    <td>{pool.match_id}</td>
+                                    <td>{pool.entry_fee}</td>
+                                    <td>{pool.total_spots}</td>
+                                    <td>{pool.done_spots}</td>
+                                    <td>{pool.price_pool}</td>
+                                    <td>{pool.winning_spots}</td>
+                                    <td>
+                                      <button
+                                        type="button"
+                                        className="btn btn-danger"
+                                        onClick={() => deleteContest(pool._id)}
+                                      >
+                                        Delete contest
+                                      </button>
+                                    </td>
+                                    <td>
+                                      <button
+                                        type="button"
+                                        className="btn btn-success"
+                                        onClick={() =>
+                                          navigateToOtherPage(pool._id)
+                                        }
+                                      >
+                                        Add Rank & Price List
+                                      </button>
+                                    </td>
+                                  </tr>
+                                ))}
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -126,4 +128,3 @@ function ListOfPostedPollPrize() {
 }
 
 export default ListOfPostedPollPrize;
-

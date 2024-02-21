@@ -27,8 +27,11 @@ function WithdrawalRequest() {
   return (
     <div>
       <body id="page-top">
-        <div id="wrapper">
-          <Sidebar />
+      <div id="wrapper" className="row m-0">
+          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
+            <Sidebar />
+          </div>
+          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0 bg-white">
           <div id="content-wrapper" className="d-flex flex-column">
             <div id="content bg-white">
               <div class="card shadow">
@@ -91,6 +94,7 @@ function WithdrawalRequest() {
                 </div>
               </div>
             </footer>
+          </div>
           </div>
         </div>
         <a className="scroll-to-top rounded" href="#page-top">

@@ -48,106 +48,110 @@ function AllUserNotification() {
   return (
     <div>
       <body id="page-top">
-        <div id="wrapper">
-          <Sidebar />
-          <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content bg-white">
-              <div className="card shadow">
-                <div className="card-body row p-3">
-                  <div className="col-lg-9">
-                    <h5 className="mt-2">Add Notification To All User</h5>
-                  </div>
-                  <div className="col-lg-3">
-                    <Link
-                      className="text-white btn btn-primary btn-lg"
-                      to={`/list-of-all-notification`}
-                    >
-                      List Of All Notification
-                    </Link>
+        <div id="wrapper" className="row m-0">
+          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
+            <Sidebar />
+          </div>
+          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
+            <div id="content-wrapper" className="d-flex flex-column">
+              <div id="content bg-white">
+                <div className="card shadow">
+                  <div className="card-body row p-3">
+                    <div className="col-lg-9">
+                      <h5 className="mt-2">Add Notification To All User</h5>
+                    </div>
+                    <div className="col-lg-3">
+                      <Link
+                        className="text-white btn btn-primary btn-lg"
+                        to={`/list-of-all-notification`}
+                      >
+                        List Of All Notification
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="container-fluid bg-white">
-                <div className="row">
-                  <div className="col-lg-12">
-                    <div className="row mt-4">
-                      <div className="col-lg-12 mb-4">
-                        <div className="card shadow">
-                          <div className="card-body">
-                            <form
-                              className="login-form"
-                              onSubmit={handleFormSubmit}
-                            >
-                              <div className="form-outline mb-4">
-                                <label
-                                  className="form-label"
-                                  htmlFor="prizePool"
-                                >
-                                  Title
-                                </label>
-                                <input
-                                  type="text"
-                                  id="prizePool"
-                                  className={`form-control ${
-                                    errors.title ? "is-invalid" : ""
-                                  }`}
-                                  placeholder="Enter title"
-                                  value={formData.title}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      title: e.target.value,
-                                    })
-                                  }
-                                />
-                                {errors.title && (
-                                  <div className="invalid-feedback">
-                                    {errors.title}
-                                  </div>
-                                )}
-                              </div>
-                              <div className="form-outline mb-4">
-                                <label
-                                  className="form-label"
-                                  htmlFor="entryFee"
-                                >
-                                  Message
-                                </label>
-                                <input
-                                  type="text"
-                                  id="entryFee"
-                                  className={`form-control ${
-                                    errors.message ? "is-invalid" : ""
-                                  }`}
-                                  placeholder="Enter message"
-                                  value={formData.message}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      message: e.target.value,
-                                    })
-                                  }
-                                />
-                                {errors.message && (
-                                  <div className="invalid-feedback">
-                                    {errors.message}
-                                  </div>
-                                )}
-                              </div>
-                              <div className="text-lg-start mt-4 pt-2">
-                                <button
-                                  type="submit"
-                                  className="btn btn-lg"
-                                  style={{
-                                    backgroundColor: "#924ACD",
-                                    color: "#fff",
-                                  }}
-                                >
-                                  Proceed
-                                </button>
-                              </div>
-                            </form>
+                <div className="container-fluid bg-white">
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <div className="row mt-4">
+                        <div className="col-lg-12 mb-4">
+                          <div className="card shadow">
+                            <div className="card-body">
+                              <form
+                                className="login-form"
+                                onSubmit={handleFormSubmit}
+                              >
+                                <div className="form-outline mb-4">
+                                  <label
+                                    className="form-label"
+                                    htmlFor="prizePool"
+                                  >
+                                    Title
+                                  </label>
+                                  <input
+                                    type="text"
+                                    id="prizePool"
+                                    className={`form-control ${
+                                      errors.title ? "is-invalid" : ""
+                                    }`}
+                                    placeholder="Enter title"
+                                    value={formData.title}
+                                    onChange={(e) =>
+                                      setFormData({
+                                        ...formData,
+                                        title: e.target.value,
+                                      })
+                                    }
+                                  />
+                                  {errors.title && (
+                                    <div className="invalid-feedback">
+                                      {errors.title}
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="form-outline mb-4">
+                                  <label
+                                    className="form-label"
+                                    htmlFor="entryFee"
+                                  >
+                                    Message
+                                  </label>
+                                  <input
+                                    type="text"
+                                    id="entryFee"
+                                    className={`form-control ${
+                                      errors.message ? "is-invalid" : ""
+                                    }`}
+                                    placeholder="Enter message"
+                                    value={formData.message}
+                                    onChange={(e) =>
+                                      setFormData({
+                                        ...formData,
+                                        message: e.target.value,
+                                      })
+                                    }
+                                  />
+                                  {errors.message && (
+                                    <div className="invalid-feedback">
+                                      {errors.message}
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="text-lg-start mt-4 pt-2">
+                                  <button
+                                    type="submit"
+                                    className="btn btn-lg"
+                                    style={{
+                                      backgroundColor: "#924ACD",
+                                      color: "#fff",
+                                    }}
+                                  >
+                                    Proceed
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -155,14 +159,14 @@ function AllUserNotification() {
                   </div>
                 </div>
               </div>
-            </div>
-            <footer className="sticky-footer bg-white">
-              <div className="container my-auto">
-                <div className="copyright text-center my-auto">
-                  <span>Copyright &copy; Your Website 2023</span>
+              <footer className="sticky-footer bg-white">
+                <div className="container my-auto">
+                  <div className="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2023</span>
+                  </div>
                 </div>
-              </div>
-            </footer>
+              </footer>
+            </div>
           </div>
         </div>
         <a className="scroll-to-top rounded" href="#page-top">

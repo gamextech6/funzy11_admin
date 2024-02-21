@@ -32,7 +32,7 @@ function Sidebar() {
         }
     };
     return (
-        <div>
+        <div style={{position: "fixed"}}>
             <ul className={style} id="accordionSidebar">
                 <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="#">
                     <div className="sidebar-brand-icon">
@@ -102,7 +102,9 @@ function Sidebar() {
                     </div>
                 </li>
                 <hr className="sidebar-divider d-none d-md-block" />
-                <img className='ml-3' src={signout} alt="Logo" style={{ width: "100px", height: "45px", paddingTop: "8%" }} />
+                <Link to="/">
+                    <img className='ml-3' src={signout} alt="Sign Out" style={{ width: "65%", height: "35%", paddingTop: "8%", cursor: "pointer", marginTop: "80%" }} />
+                </Link>
             </ul>
 
             {/* <img className='mr-2' src={signout} alt="Logo" style={{ width: "15px", height: "15px" }} /> */}
