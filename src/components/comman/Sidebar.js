@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../asset/logo.png' 
+import logo from '../../asset/logo.png';
+import dashboardIcon from '../../asset/dashboardIcon.png';
+import userIcon from '../../asset/userIcon.png';
+import gameIcon from '../../asset/Game.png';
+import notificationIcon from '../../asset/notificationIcon.png';
+import bankIcon from '../../asset/bankIcon.png';
+import signout from '../../asset/signOutImage.png';
 import "./style.css";
 
 
@@ -34,19 +40,18 @@ function Sidebar() {
                     </div>
                     <div className="sidebar-brand-text mx-3 mt-2"><h3><b>Funzy</b></h3></div>
                 </Link>
-            
                 <hr className="sidebar-divider my-0" />
-
                 <li className="nav-item active">
                     <Link className="nav-link" to="/dashboard">
-                        <i className="fas fa-fw fa-tachometer-alt"></i>
+                        <img className='mr-2' src={dashboardIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
+                        {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
                         <span>Dashboard</span></Link>
                 </li>
                 <hr className="sidebar-divider" />
                 <li className="nav-item colors">
                     <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseUser"
                         aria-expanded="true" aria-controls="collapseUser">
-                        <i className="fas fa-fw fa-folder"></i>
+                        <img className='mr-2' src={userIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
                         <span>Users</span>
                     </Link>
                     <div id="collapseUser" className="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
@@ -55,10 +60,10 @@ function Sidebar() {
                         </div>
                     </div>
                 </li>
-                 <li className="nav-item">
+                <li className="nav-item">
                     <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseAdminAgent"
                         aria-expanded="true" aria-controls="collapseAdminAgent">
-                        <i className="fas fa-fw fa-folder"></i>
+                        <img className='mr-2' src={gameIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
                         <span>Game</span>
                     </Link>
                     <div id="collapseAdminAgent" className="collapse" aria-labelledby="headingAdminAgent" data-parent="#accordionSidebar">
@@ -70,10 +75,10 @@ function Sidebar() {
                         </div>
                     </div>
                 </li>
-              <li className="nav-item">
+                <li className="nav-item">
                     <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseAgent"
                         aria-expanded="true" aria-controls="collapseAgent">
-                        <i className="fas fa-fw fa-folder"></i>
+                        <img className='mr-2' src={notificationIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
                         <span>Notification</span>
                     </Link>
                     <div id="collapseAgent" className="collapse" aria-labelledby="headingAgent" data-parent="#accordionSidebar">
@@ -86,7 +91,7 @@ function Sidebar() {
                 <li className="nav-item">
                     <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseBank"
                         aria-expanded="true" aria-controls="collapseBank">
-                        <i className="fas fa-fw fa-folder"></i>
+                        <img className='mr-2' src={bankIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
                         <span>Bank Details</span>
                     </Link>
                     <div id="collapseBank" className="collapse" aria-labelledby="headingBank" data-parent="#accordionSidebar">
@@ -97,7 +102,10 @@ function Sidebar() {
                     </div>
                 </li>
                 <hr className="sidebar-divider d-none d-md-block" />
+                <img className='ml-3' src={signout} alt="Logo" style={{ width: "100px", height: "45px", paddingTop: "8%" }} />
             </ul>
+
+            {/* <img className='mr-2' src={signout} alt="Logo" style={{ width: "15px", height: "15px" }} /> */}
         </div>
     )
 }
