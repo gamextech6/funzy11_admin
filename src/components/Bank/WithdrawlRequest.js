@@ -52,7 +52,7 @@ function WithdrawalRequest() {
                 </ul>
               </nav>
 
-             <div className="container mt-5">
+             <div className="container mt-5 bg-white">
               <div className="row">
               <div className="col-lg-12 mb-4 col-sm-12">
                 <div className="card-body">

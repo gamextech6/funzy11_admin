@@ -31,14 +31,14 @@ function WithdrawalRequest() {
         <div id="wrapper">
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
+            <div id="content bg-white">
               <div class="card shadow">
                 <div class="card-body">
                   <h3 className="pl-3">Withdrawal History </h3>
                 </div>
               </div>
-              <div className="container-fluid p-5">
-                <table className="table text-center rounded p-2">
+              <div className="container-fluid p-5 bg-white">
+                <table className="table text-center rounded border p-2">
                   <thead>
                     <tr>
                       <th>Phone Number</th>

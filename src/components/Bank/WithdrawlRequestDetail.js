@@ -51,7 +51,7 @@ function WithdrawalRequest() {
         <div id="wrapper">
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
+            <div id="content bg-white">
               <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style={{height:"80px"}}>
                 <ul className="navbar-nav text-black">
                   <p
@@ -68,7 +68,7 @@ function WithdrawalRequest() {
                   </p>
                 </ul>
               </nav>
-              <div className="container mt-5">
+              <div className="container mt-5 bg-white">
                 <div className="row">
                   <div className="col-lg-12 mb-4 col-sm-12">
                       <div className="card-body">
