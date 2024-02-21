@@ -26,7 +26,6 @@ function ListOfRankAndPrice() {
             const result = await deletePoolContest(contestId);
             console.log(result);
             window.location.reload();
-            // Handle the result as needed
         } catch (error) {
             // Handle errors here, if needed
         }

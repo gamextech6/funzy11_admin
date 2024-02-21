@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
-import { Link } from "react-router-dom";
 import { allWithdrawl } from "../../api";
 
 function WithdrawalRequest() {

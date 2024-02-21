@@ -1,5 +1,3 @@
-//not in use
-
 import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import Header from "../comman/Header";

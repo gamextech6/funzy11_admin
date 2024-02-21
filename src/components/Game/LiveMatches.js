@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
-import Header from "../comman/Header";
 import "./UpCommingGame.css";
 import { Link } from "react-router-dom";
 import { fetchLiveMatches } from "../../api";
@@ -29,11 +28,11 @@ function LiveMatches() {
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
             <div id="content bg-white">
-              <div class="card shadow">
-                <div class="card-body">
-                  <h3 className="pl-3">Live Match List</h3>
-                </div>
-              </div>
+              <nav className="navbar navbar-expand navbar-light bg-white topbar static-top shadow" style={{ height: '80px' }}>
+                <ul className="navbar-nav text-black">
+                  <h4 className='ml-2' style={{ fontFamily: "Poppins", fontSize: "30px", fontWeight: "400" }}>Live Match List</h4>
+                </ul>
+              </nav>
               <div className="container-fluid p-5 bg-white">
                 <div className="row g-4">
                   {matchData.map((match) => (
@@ -43,19 +42,19 @@ function LiveMatches() {
                           <img src={match.teama_logo} alt="" width="70" />
                           <h5 className="card-title mb-0">{match.teama_name}</h5>
                           <p className="timeBorder time text-danger pt-3"
-                          style={{
-                            border: "2px solid rgba(255, 0, 0, 0.1)",
-                            borderRadius: "50px",
-                            padding: "5px",
-                            width: "272.93px",
-                            height: "44.88px",
-                            backgroundColor: "rgba(255, 0, 0, 0.1)",
-                            textAlign: "center",
-                            display: "flex",
-                            justifyContent: "center",
-                            paddingTop: "1%",
-                            fontSize: "12px"
-                          }}
+                            style={{
+                              border: "2px solid rgba(255, 0, 0, 0.1)",
+                              borderRadius: "50px",
+                              padding: "5px",
+                              width: "272.93px",
+                              height: "44.88px",
+                              backgroundColor: "rgba(255, 0, 0, 0.1)",
+                              textAlign: "center",
+                              display: "flex",
+                              justifyContent: "center",
+                              paddingTop: "1%",
+                              fontSize: "12px"
+                            }}
                           >
                             {match.startdatetime}
                           </p>

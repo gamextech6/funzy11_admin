@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
-import Header from "../comman/Header";
 import "./UpCommingGame.css";
 import { Link } from "react-router-dom";
 import { fetchAllMatchData } from "../../api";
@@ -30,12 +29,12 @@ function UpCommingGame() {
           <Sidebar />
           <div id="content-wrapper" className="d-flex flex-column">
             <div id="content bg-white">
-              <div class="card shadow">
-                <div class="card-body">
-                  <h3 className="pl-3">Up Coming Match List</h3>
-                </div>
-              </div>
-              <div className="container-fluid p-5 bg-white">
+              <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style={{ height: '80px' }}>
+                <ul className="navbar-nav text-black">
+                  <h4 className='ml-2' style={{ fontFamily: "Poppins", fontSize: "30px", fontWeight: "400" }}>Up Coming Match List</h4>
+                </ul>
+              </nav>
+              <div className="container-fluid bg-white">
                 <div className="row g-4">
                   {matchData.map((match) => (
                     <div key={match.match_id} className="col-12">

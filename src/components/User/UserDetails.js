@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../comman/Sidebar";
-import Header from "../comman/Header";
 import { getUserByPhoneNo, blockUser, unblockUser } from "../../api";
 
 const UserDetails = ({ match }) => {
   const { phoneNumber } = useParams();
-  // const [userData, setUserData] = useState([]);
   const [phoneNo, setPhoneNumber] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

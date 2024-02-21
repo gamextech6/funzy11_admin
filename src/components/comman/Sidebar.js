@@ -28,17 +28,12 @@ function Sidebar() {
     return (
         <div>
             <ul className={style} id="accordionSidebar">
-
-                {/*  <!-- Sidebar - Brand --> */}
-                <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="#">
                     <div className="sidebar-brand-icon">
                         <img src={logo} alt="Logo" style={{ width: "40px", height: "40px" }} />
                     </div>
                     <div className="sidebar-brand-text mx-3 mt-2"><h3><b>Funzy</b></h3></div>
-                    {/* <div className="text-center d-none d-md-inline">
-                        <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
-                    </div> */}
-                </a>
+                </Link>
             
                 <hr className="sidebar-divider my-0" />
 
@@ -49,11 +44,11 @@ function Sidebar() {
                 </li>
                 <hr className="sidebar-divider" />
                 <li className="nav-item colors">
-                    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                    <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseUser"
                         aria-expanded="true" aria-controls="collapseUser">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Users</span>
-                    </a>
+                    </Link>
                     <div id="collapseUser" className="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
                         <div className="bg-white py-2 collapse-inner rounded">
                             <Link className="collapse-item" to="/all-user">All Users</Link>
@@ -61,11 +56,11 @@ function Sidebar() {
                     </div>
                 </li>
                  <li className="nav-item">
-                    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminAgent"
+                    <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseAdminAgent"
                         aria-expanded="true" aria-controls="collapseAdminAgent">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Game</span>
-                    </a>
+                    </Link>
                     <div id="collapseAdminAgent" className="collapse" aria-labelledby="headingAdminAgent" data-parent="#accordionSidebar">
                         <div className="bg-white py-2 collapse-inner rounded">
                             <Link className="collapse-item" to="/up-comming-game">Up Comming Game</Link>
@@ -76,11 +71,11 @@ function Sidebar() {
                     </div>
                 </li>
               <li className="nav-item">
-                    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAgent"
+                    <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseAgent"
                         aria-expanded="true" aria-controls="collapseAgent">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Notification</span>
-                    </a>
+                    </Link>
                     <div id="collapseAgent" className="collapse" aria-labelledby="headingAgent" data-parent="#accordionSidebar">
                         <div className="bg-white py-2 collapse-inner rounded">
                             <Link className="collapse-item" to="/notification-to-all-user">To All User</Link>
@@ -89,11 +84,11 @@ function Sidebar() {
                     </div>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBank"
+                    <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseBank"
                         aria-expanded="true" aria-controls="collapseBank">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Bank Details</span>
-                    </a>
+                    </Link>
                     <div id="collapseBank" className="collapse" aria-labelledby="headingBank" data-parent="#accordionSidebar">
                         <div className="bg-white py-2 collapse-inner rounded">
                             <Link className="collapse-item" to="/withdrawal-requests">Withdrawal Requests</Link>
@@ -101,9 +96,7 @@ function Sidebar() {
                         </div>
                     </div>
                 </li>
-                {/* <!-- Divider --> */}
                 <hr className="sidebar-divider d-none d-md-block" />
-
             </ul>
         </div>
     )

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../comman/Sidebar';
-import Header from '../comman/Header';
 import { getAllUser, blockUser, unblockUser } from "../../api";
 import { Link } from 'react-router-dom';
 
@@ -68,11 +67,11 @@ function AllUser() {
                                 <td style={{ padding: "1.5rem", paddingTop: "1.5rem" }}><Link className='text-black' to={`/user-details/${row.phoneNumber}`}>+91 {row.phoneNumber}</Link></td>
                                 <td style={{ padding: "1.5rem", paddingTop: "1.5rem", paddingLeft: "12%" }} className='text-left'> Rs {row.balance}</td>
                                 <td className='pt-3'>{row.blocked ? (
-                                  <button type="button" className="btn" style={{ border: "1px solid #109E38", color: "#109E38" }} onClick={() => handleUnblockUser(row.phoneNumber)}>
+                                  <button type="button" className="btn" style={{ border: "2px solid #109E38", color: "#109E38" }} onClick={() => handleUnblockUser(row.phoneNumber)}>
                                     Unblock
                                   </button>
                                 ) : (
-                                  <button type="button" className="btn px-4" style={{ border: "1px solid #BE3431", color: "#BE3431" }} onClick={() => handleBlockUser(row.phoneNumber)}>
+                                  <button type="button" className="btn px-4" style={{ border: "2px solid #BE3431", color: "#BE3431" }} onClick={() => handleBlockUser(row.phoneNumber)}>
                                     Block
                                   </button>
                                 )}</td>

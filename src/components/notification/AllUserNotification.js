@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import Modal from "react-modal";
-import Header from "../comman/Header";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { sendNotificationToAll } from "../../api";
 
 function AllUserNotification() {
-  // const { contest_id } = useParams();
   const [formData, setFormData] = useState({
     title: "",
     message: "",
@@ -19,13 +16,10 @@ function AllUserNotification() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => {
     setIsModalOpen(false);
-    // Add any other necessary logic after closing the modal
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
-    // Form validation
     const newErrors = {};
     if (!formData.title) newErrors.title = "Title is required";
     if (!formData.message) newErrors.message = "Message is required";
@@ -36,18 +30,11 @@ function AllUserNotification() {
       return;
     }
     try {
-      // Make API call
       const response = await sendNotificationToAll({
         title: parseInt(formData.title), // Convert to integer
         message: parseInt(formData.message),
       });
-
-      // Handle the API response here if needed
-      console.log("API Response:", response);
-
-      // Display the modal on successful response
       openModal();
-
       setFormData({
         title: "",
         message: "",

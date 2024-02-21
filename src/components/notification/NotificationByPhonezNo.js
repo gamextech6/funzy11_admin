@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import Modal from "react-modal";
-import Header from "../comman/Header";
 import { Link } from "react-router-dom";
 import { sendNotificationToSpecificUser } from "../../api";
 

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../comman/Sidebar';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { fetchPoolContestData, deletePoolContest } from "../../api";
-
-
 
 function ListOfAllNotification() {
     const { matchId } = useParams();
