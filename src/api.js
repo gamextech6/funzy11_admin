@@ -32,11 +32,11 @@ export const loginUser = async (username, password) => {
   }
 };
 
-export const getAllUser = async () => {
+export const getAllUser = async (pageNo) => {
   try {
     const requestOptions = {
       method: 'post',
-      url: `${API_BASE_URL}/admin/gettotal-user`,
+      url: `${API_BASE_URL}/admin/gettotal-user?page=${pageNo}&limit=10`,
     };
 
     const response = await axios(requestOptions);

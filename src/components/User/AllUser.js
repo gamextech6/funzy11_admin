@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 
 function AllUser() {
   const [userData, setUserData] = useState([]);
-  const handleAllUser = async (event) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, settotalPage] = useState();
+  const handleAllUser = async (pageNo) => {
     try {
-      const result = await getAllUser();
-      console.log(result.allUser);
+      const result = await getAllUser(pageNo);
+      console.log(result.totalpage);
       setUserData(result.allUser);
+      settotalPage(result.totalpage);
     } catch (error) {
       console.error("Error registering user:", error);
     }
@@ -33,9 +36,26 @@ function AllUser() {
     }
   };
 
+  const handleNextPage = () => {
+    if (currentPage < totalPage) {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      handleAllUser(nextPage);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      const previousPage = currentPage - 1;
+      setCurrentPage(previousPage);
+      handleAllUser(previousPage);
+    }
+  };
+
   useEffect(() => {
-    handleAllUser();
-  }, []);
+    handleAllUser(currentPage);
+  }, [currentPage]);
+
   return (
     <div>
       <body id="page-top">
@@ -178,53 +198,20 @@ function AllUser() {
                               <td>
                                 {" "}
                                 <nav>
-                                  <ul
-                                    class="pagination d-flex"
-                                    style={{
-                                      justifyContent: "center",
-                                      width: "200%",
-                                    }}
-                                  >
-                                    <div>
-                                      <li class="page-item disabled">
-                                        <a
-                                          class="page-link"
-                                          href="#"
-                                          tabindex="-1"
-                                        >
-                                          Previous
+                                  <ul className="pagination d-flex" style={{ justifyContent: "center", width: "200%" }}>
+                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                      <a className="page-link" href="#" onClick={handlePreviousPage}>Previous</a>
+                                    </li>
+                                    {Array.from(Array(totalPage).keys()).map((page) => (
+                                      <li key={page} className="page-item">
+                                        <a className={`page-link ${currentPage === page + 1 ? 'active' : ''}`} onClick={() => handleAllUser(page + 1)} href="#">
+                                          {page + 1}
                                         </a>
                                       </li>
-                                    </div>
-                                    <div
-                                      style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                      }}
-                                    >
-                                      <li class="page-item">
-                                        <a class="page-link" href="#">
-                                          1
-                                        </a>
-                                      </li>
-                                      <li class="page-item">
-                                        <a class="page-link" href="#">
-                                          2
-                                        </a>
-                                      </li>
-                                      <li class="page-item">
-                                        <a class="page-link" href="#">
-                                          3
-                                        </a>
-                                      </li>
-                                    </div>
-                                    <div>
-                                      <li class="page-item">
-                                        <a class="page-link" href="#">
-                                          Next
-                                        </a>
-                                      </li>
-                                    </div>
+                                    ))}
+                                    <li className={`page-item ${currentPage === totalPage ? 'disabled' : ''}`}>
+                                      <a className="page-link" href="#" onClick={handleNextPage}>Next</a>
+                                    </li>
                                   </ul>
                                 </nav>
                               </td>
