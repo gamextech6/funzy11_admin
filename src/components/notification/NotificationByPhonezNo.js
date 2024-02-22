@@ -63,8 +63,9 @@ function NotificationByPhonezNo() {
                     </div>
                     <div className="col-lg-3">
                       <Link
-                        className="text-white btn btn-primary btn-lg"
+                        className="text-white btn btn-primary btn-lg justify-content-end"
                         to={`/list-of-all-notification-specific-user`}
+                        state={{marginLeft: "50%"}}
                       >
                         List Of All Notification
                       </Link>

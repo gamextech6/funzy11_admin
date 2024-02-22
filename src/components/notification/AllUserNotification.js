@@ -49,27 +49,41 @@ function AllUserNotification() {
     <div>
       <body id="page-top">
         <div id="wrapper" className="row m-0">
-          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
+          <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 p-0">
             <Sidebar />
           </div>
-          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
+          <div className="col-xl-10 col-lg-10 col-md-10 col-sm-10 p-0">
             <div id="content-wrapper" className="d-flex flex-column">
               <div id="content bg-white">
-                <div className="card shadow">
-                  <div className="card-body row p-3">
-                    <div className="col-lg-9">
-                      <h5 className="mt-2">Add Notification To All User</h5>
-                    </div>
-                    <div className="col-lg-3">
-                      <Link
-                        className="text-white btn btn-primary btn-lg"
+
+                <nav
+                  className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                  style={{ height: "80px" }}
+                >
+                  <ul className="navbar-nav text-black">
+                    <p
+                      className="ml-2"
+                      style={{
+                        fontFamily: "poppins",
+                        fontSize: "28.8px",
+                        fontWeight: "400",
+                        lineHeight: "50.4px",
+                        color: "#232D42CC",
+                      }}
+                    >
+                     Add Notification To All User
+                    </p>
+                     
+
+                  </ul>
+                  <Link
+                        className="text-white my-lg-0 btn btn-primary btn-lg justify-content-end"
                         to={`/list-of-all-notification`}
+                        state={{marginLeft: "50%"}}
                       >
                         List Of All Notification
                       </Link>
-                    </div>
-                  </div>
-                </div>
+                </nav>
 
                 <div className="container-fluid bg-white">
                   <div className="row">

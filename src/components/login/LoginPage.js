@@ -73,8 +73,8 @@ function LoginPage() {
           {passwordError && <div className="invalid-feedback">{passwordError}</div>}
         </div>
         {inCorrect == true ? <><p style={{ color: "red" }}>Email or Password not match</p></> : <></>}
-        <div className="text-lg-start">
-          <button onClick={navigateToOtherPage} className="btn btn-primary btn-lg">Proceed</button>
+        <div className="text-lg-start" >
+          <button onClick={navigateToOtherPage} className="btn btn-lg" style={{backgroundColor:"#D54EC8", color:"white"}}>Proceed</button>
         </div>
       </form>
     </div>

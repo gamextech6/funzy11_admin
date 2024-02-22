@@ -27,7 +27,7 @@ function Dashboard() {
           <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
             <Sidebar />
           </div>
-          <div className="col-lg-8 col-xl-8 col-md-8 col-sm-9  p-0 bg-white">
+          <div className="col-lg-8 col-xl-8 col-md-8 col-sm-9 p-0 bg-white">
             <div id="content-wrapper" className="d-flex flex-column">
               <div id="content">
                 <nav

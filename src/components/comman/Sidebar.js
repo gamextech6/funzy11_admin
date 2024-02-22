@@ -11,39 +11,19 @@ import "./style.css";
 
 
 function Sidebar() {
-
-    const [style, setStyle] = useState("navbar-nav bg-black sidebar sidebar-dark accordion");
-
-    const changeStyle = () => {
-        if (style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
-            setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled");
-        }
-        else {
-            setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
-        }
-    };
-
-    const changeStyle1 = () => {
-        if (style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
-            setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1");
-        }
-        else {
-            setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
-        }
-    };
     return (
         <div style={{position: "fixed"}}>
-            <ul className={style} id="accordionSidebar">
+            <ul className="d-flex navbar-nav bg-black sidebar sidebar-dark accordion" id="accordionSidebar">
                 <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="#">
                     <div className="sidebar-brand-icon">
-                        <img src={logo} alt="Logo" style={{ width: "40px", height: "40px" }} />
+                        <img src={logo} alt="Logo" style={{ width: "60%", height: "60%" }} />
                     </div>
-                    <div className="sidebar-brand-text mx-3 mt-2"><h3><b>Funzy</b></h3></div>
+                    <div className="sidebar-brand-text mx-2 mt-2"><h3><b>Funzy</b></h3></div>
                 </Link>
                 <hr className="sidebar-divider my-0" />
                 <li className="nav-item active">
                     <Link className="nav-link" to="/dashboard">
-                        <img className='mr-2' src={dashboardIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
+                        <img className='mr-2' src={dashboardIcon} alt="Logo" style={{ width: "10%", height: "10%" }} />
                         {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
                         <span>Dashboard</span></Link>
                 </li>
@@ -51,7 +31,7 @@ function Sidebar() {
                 <li className="nav-item colors">
                     <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseUser"
                         aria-expanded="true" aria-controls="collapseUser">
-                        <img className='mr-2' src={userIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
+                        <img className='mr-2' src={userIcon} alt="Logo" style={{ width: "9%", height: "9%" }} />
                         <span>Users</span>
                     </Link>
                     <div id="collapseUser" className="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
@@ -63,7 +43,7 @@ function Sidebar() {
                 <li className="nav-item">
                     <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseAdminAgent"
                         aria-expanded="true" aria-controls="collapseAdminAgent">
-                        <img className='mr-2' src={gameIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
+                        <img className='mr-2' src={gameIcon} alt="Logo" style={{ width: "9%", height: "9%" }} />
                         <span>Game</span>
                     </Link>
                     <div id="collapseAdminAgent" className="collapse" aria-labelledby="headingAdminAgent" data-parent="#accordionSidebar">
@@ -78,7 +58,7 @@ function Sidebar() {
                 <li className="nav-item">
                     <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseAgent"
                         aria-expanded="true" aria-controls="collapseAgent">
-                        <img className='mr-2' src={notificationIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
+                        <img className='mr-2' src={notificationIcon} alt="Logo" style={{ width: "9%", height: "9%" }} />
                         <span>Notification</span>
                     </Link>
                     <div id="collapseAgent" className="collapse" aria-labelledby="headingAgent" data-parent="#accordionSidebar">
@@ -91,7 +71,7 @@ function Sidebar() {
                 <li className="nav-item">
                     <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseBank"
                         aria-expanded="true" aria-controls="collapseBank">
-                        <img className='mr-2' src={bankIcon} alt="Logo" style={{ width: "15px", height: "15px" }} />
+                        <img className='mr-2' src={bankIcon} alt="Logo" style={{ width: "9%", height: "9%" }} />
                         <span>Bank Details</span>
                     </Link>
                     <div id="collapseBank" className="collapse" aria-labelledby="headingBank" data-parent="#accordionSidebar">
@@ -103,7 +83,7 @@ function Sidebar() {
                 </li>
                 <hr className="sidebar-divider d-none d-md-block" />
                 <Link to="/">
-                    <img className='ml-3' src={signout} alt="Sign Out" style={{ width: "65%", height: "35%", paddingTop: "8%", cursor: "pointer", marginTop: "80%" }} />
+                    <img className='ml-3 align-content-bottom' src={signout} alt="Sign Out" style={{ width: "65%", height: "35%", paddingTop: "60%", cursor: "pointer", marginTop: "80%" }} />
                 </Link>
             </ul>
 
