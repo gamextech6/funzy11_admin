@@ -1,3 +1,7 @@
 .nav-item{
     background: #924ACD;
 }
+
+.sidebar-container {
+    width: 100% !important;
+}

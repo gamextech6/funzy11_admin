@@ -11575,7 +11575,7 @@ a:focus {
     padding: .5rem 0;
     min-width: 10rem;
     font-size: .85rem;
-    margin: 0 0 1rem 0
+    margin: 0 0 0rem 0
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-header,
@@ -11659,10 +11659,10 @@ a:focus {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 800;
-    padding: 1.5rem 1rem;
+ 
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: .05rem;
+    letter-spacing: .04rem;
     z-index: 1
 }
 
@@ -11713,7 +11713,7 @@ a:focus {
 
 @media (min-width:768px) {
     .sidebar {
-        width: 14rem !important
+        width: 14rem 
     }
 
     .sidebar .nav-item .collapse {
@@ -11745,7 +11745,6 @@ a:focus {
         width: 100%;
         text-align: left;
         padding: 1rem;
-        width: 14rem
     }
 
     .sidebar .nav-item .nav-link i {

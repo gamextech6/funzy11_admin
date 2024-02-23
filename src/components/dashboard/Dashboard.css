@@ -45,10 +45,10 @@
 
 .vertical-divider {
     border-left: 1px solid #ccc; /* Adjust the color and thickness as needed */
-    height: 100%; /* Adjust the height of the divider */
-  }
+    /* height: 100%; /* Adjust the height of the divider */
+   } 
 
-  .timeBorder {
+.timeBorder {
     border: 2px;
     border-radius: 50px;
     padding: 5px;

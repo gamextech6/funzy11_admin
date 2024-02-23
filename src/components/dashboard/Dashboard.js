@@ -21,13 +21,13 @@ function Dashboard() {
     handleTotalUserCount();
   }, []);
   return (
-    <div>
+    <>
       <body id="page-top">
         <div id="wrapper" className="row m-0">
           <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
-            <Sidebar />
+            <Sidebar style={{ width: "calc(100% - 2px)" }} />
           </div>
-          <div className="col-lg-8 col-xl-8 col-md-8 col-sm-9 p-0 bg-white">
+          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0 bg-white">
             <div id="content-wrapper" className="d-flex flex-column">
               <div id="content">
                 <nav
@@ -274,7 +274,7 @@ function Dashboard() {
           <i className="fas fa-angle-up"></i>
         </a>
       </body>
-    </div>
+    </>
   );
 }
 export default Dashboard;

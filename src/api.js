@@ -278,6 +278,49 @@ export const AllNotificationByPhoneNo = (data) => {
     });
 };
 
+export const allNotification = async () => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow',
+  };
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/showNotificationMessage`, requestOptions);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error; 
+  }
+};
+
+export const deleteNotification = (data) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    "message": data
+  });
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  return fetch(`${API_BASE_URL}/admin/deleteMessage`, requestOptions)
+    .then(response => response.json())
+    .catch(error => {
+      console.error('API Error:', error);
+      throw error; // Propagate the error to the caller
+    });
+};
+
+
 
 export const sendNotificationToSpecificUser = (data) => {
   const myHeaders = new Headers();
