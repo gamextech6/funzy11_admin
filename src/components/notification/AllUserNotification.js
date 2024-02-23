@@ -9,32 +9,30 @@ function AllUserNotification() {
     title: "",
     message: "",
   });
-
   const [errors, setErrors] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
-
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
     if (!formData.title) newErrors.title = "Title is required";
     if (!formData.message) newErrors.message = "Message is required";
-
     // If there are errors, set them and stop form submission
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
+    console.log(formData);
     try {
       const response = await sendNotificationToAll({
-        title: parseInt(formData.title), // Convert to integer
-        message: parseInt(formData.message),
+        title: formData.title, // Convert to integer
+        message: formData.message,
       });
       openModal();
+      console.log(response);
       setFormData({
         title: "",
         message: "",
@@ -55,8 +53,36 @@ function AllUserNotification() {
           <div className="col-xl-10 col-lg-10 col-md-10 col-sm-10 p-0">
             <div id="content-wrapper" className="d-flex flex-column">
               <div id="content bg-white">
+              <nav
+                  className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                  style={{ height: "80px" }}
+                >
+                   <div className="col-lg-9">
+                  <ul className="navbar-nav text-black">
+                    <h4
+                      className="ml-2"
+                      style={{
+                        fontFamily: "Poppins",
+                        fontSize: "30px",
+                        fontWeight: "400",
+                      }}
+                    >
+                     Add Notification To All User{" "}
+                    </h4>
+                  </ul>
+                  </div>
 
-                <nav
+                  <div className="col-lg-3">
+                      <Link
+                        className="text-white btn btn-primary btn-lg justify-content-end"
+                        to={`/list-of-all-notification`}
+                        state={{marginLeft: "50%"}}
+                      >
+                        List Of All Notification
+                      </Link>
+                    </div>
+                </nav>
+                {/* <nav
                   className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
                   style={{ height: "80px" }}
                 >
@@ -71,20 +97,17 @@ function AllUserNotification() {
                         color: "#232D42CC",
                       }}
                     >
-                     Add Notification To All User
+                      Add Notification To All User
                     </p>
-                     
-
                   </ul>
                   <Link
-                        className="text-white my-lg-0 btn btn-primary btn-lg justify-content-end"
-                        to={`/list-of-all-notification`}
-                        state={{marginLeft: "50%"}}
-                      >
-                        List Of All Notification
-                      </Link>
-                </nav>
-
+                    className="text-white my-lg-0 btn btn-primary btn-lg justify-content-end"
+                    to={`/list-of-all-notification`}
+                    state={{ marginLeft: "50%" }}
+                  >
+                    List Of All Notification
+                  </Link>
+                </nav> */}
                 <div className="container-fluid bg-white">
                   <div className="row">
                     <div className="col-lg-12">
@@ -106,9 +129,8 @@ function AllUserNotification() {
                                   <input
                                     type="text"
                                     id="prizePool"
-                                    className={`form-control ${
-                                      errors.title ? "is-invalid" : ""
-                                    }`}
+                                    className={`form-control ${errors.title ? "is-invalid" : ""
+                                      }`}
                                     placeholder="Enter title"
                                     value={formData.title}
                                     onChange={(e) =>
@@ -134,9 +156,8 @@ function AllUserNotification() {
                                   <input
                                     type="text"
                                     id="entryFee"
-                                    className={`form-control ${
-                                      errors.message ? "is-invalid" : ""
-                                    }`}
+                                    className={`form-control ${errors.message ? "is-invalid" : ""
+                                      }`}
                                     placeholder="Enter message"
                                     value={formData.message}
                                     onChange={(e) =>

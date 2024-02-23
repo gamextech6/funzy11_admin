@@ -259,6 +259,26 @@ export const sendNotificationToAll = (data) => {
     });
 };
 
+export const AllNotificationByPhoneNo = (data) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify(data),
+    redirect: 'follow'
+  };
+
+  return fetch(`${API_BASE_URL}/admin/searchNotifications`, requestOptions)
+    .then(response => response.json())
+    .catch(error => {
+      console.error('API Error:', error);
+      throw error; // Propagate the error to the caller
+    });
+};
+
+
 export const sendNotificationToSpecificUser = (data) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");

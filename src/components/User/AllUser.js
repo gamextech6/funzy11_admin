@@ -1,12 +1,42 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../comman/Sidebar";
-import { getAllUser, blockUser, unblockUser } from "../../api";
+import { getAllUser, blockUser, unblockUser, getUserByPhoneNo } from "../../api";
 import { Link } from "react-router-dom";
 
 function AllUser() {
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [balance, setBalance] = useState("");
+  const [isBlocked, setIsBlocked] = useState(false);
+  const [phoneNo, setPhoneNo] = useState();
   const [userData, setUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, settotalPage] = useState();
+  const [errors, setErrors] = useState({});
+
+  const handelSearch = async (e) => {
+    e.preventDefault();
+    const newErrors = {};
+    if (!phoneNo) newErrors.phoneNo = "Phone number is required";
+    // If there are errors, set them and stop form submission
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    try {
+      const result = await getUserByPhoneNo(phoneNo);
+      console.log(result);
+      const [user] = result.data;
+      setPhoneNumber(user?.phoneNumber);
+      setBalance(user?.balance);
+      setIsBlocked(user?.blocked);
+      // Clear previous errors
+      setErrors({});
+      // Process the result as needed
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
   const handleAllUser = async (pageNo) => {
     try {
       const result = await getAllUser(pageNo);
@@ -85,6 +115,24 @@ function AllUser() {
                       All Users List{" "}
                     </h4>
                   </ul>
+
+                  <form class="form-inline my-2 my-lg-0" style={{ marginLeft: "55%" }}>
+                    <div>
+                      <input
+                        class={`form-control mr-sm-2 ${errors.phoneNo ? "is-invalid" : ""}`}
+                        type="text"
+                        placeholder="Enter phone no."
+                        aria-label="Search"
+                        value={phoneNo}
+                        onChange={(e) => setPhoneNo(e.target.value)}
+                      />
+                      {errors.phoneNo && (
+                        <div className="invalid-feedback">{errors.phoneNo}</div>
+                      )}
+                    </div>
+
+                    <button class="btn btn-outline-success my-2 my-sm-0" onClick={handelSearch} type="submit">Search</button>
+                  </form>
                 </nav>
                 <div className="container text-center p-4">
                   <div className="row">
@@ -133,7 +181,7 @@ function AllUser() {
                               </tr>
                             </thead>
                             <tbody>
-                              {userData.map((row) => (
+                              { phoneNumber == null ? <>{userData.map((row) => (
                                 <tr
                                   key={row.id}
                                   className="text-center align-items-center"
@@ -214,7 +262,64 @@ function AllUser() {
                                     </li>
                                   </ul>
                                 </nav>
-                              </td>
+                              </td></>  : <tr className="text-center align-items-center">
+                                  <td
+                                    style={{
+                                      padding: "1.5rem",
+                                      paddingTop: "1.5rem",
+                                    }}
+                                  >
+                                    <Link
+                                      className="text-black"
+                                      to={`/user-details/${phoneNumber}`}
+                                    >
+                                      +91 {phoneNumber}
+                                    </Link>
+                                  </td>
+                                  <td
+                                    style={{
+                                      padding: "1.5rem",
+                                      paddingTop: "1.5rem",
+                                      paddingLeft: "12%",
+                                    }}
+                                    className="text-left"
+                                  >
+                                    {" "}
+                                    Rs {balance}
+                                  </td>
+                                  <td className="pt-3">
+                                    {isBlocked ? (
+                                      <button
+                                        type="button"
+                                        className="btn"
+                                        style={{
+                                          border: "2px solid #109E38",
+                                          color: "#109E38",
+                                        }}
+                                        onClick={() =>
+                                          handleUnblockUser(phoneNumber)
+                                        }
+                                      >
+                                        Unblock
+                                      </button>
+                                    ) : (
+                                      <button
+                                        type="button"
+                                        className="btn px-4"
+                                        style={{
+                                          border: "2px solid #BE3431",
+                                          color: "#BE3431",
+                                        }}
+                                        onClick={() =>
+                                          handleBlockUser(phoneNumber)
+                                        }
+                                      >
+                                        Block
+                                      </button>
+                                    )}
+                                  </td>
+                                </tr> }
+                              
                             </tbody>
                           </table>
                         </div>

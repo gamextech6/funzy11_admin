@@ -30,9 +30,9 @@ function NotificationByPhonezNo() {
     }
     try {
       const response = await sendNotificationToSpecificUser({
-        phoneNumber: parseInt(formData.phoneNumber),
-        title: parseInt(formData.title), // Convert to integer
-        message: parseInt(formData.message),
+        phoneNumber: formData.phoneNumber,
+        title:formData.title, // Convert to integer
+        message:formData.message,
       });
       console.log("API Response:", response);
       openModal();
@@ -54,14 +54,30 @@ function NotificationByPhonezNo() {
             <Sidebar />
           </div>
           <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
-            <div id="content-wrapper" className="d-flex flex-column">
+            <div id="content-wrapper bg-white" className="d-flex flex-column">
               <div id="content bg-white">
-                <div className="card shadow">
-                  <div className="card-body row p-3">
-                    <div className="col-lg-9">
-                      <h5 className="mt-2">Add Notification By Phone No.</h5>
-                    </div>
-                    <div className="col-lg-3">
+               
+
+                <nav
+                  className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                  style={{ height: "80px" }}
+                >
+                   <div className="col-lg-9">
+                  <ul className="navbar-nav text-black">
+                    <h4
+                      className="ml-2"
+                      style={{
+                        fontFamily: "Poppins",
+                        fontSize: "30px",
+                        fontWeight: "400",
+                      }}
+                    >
+                     Add Notification By Phone No.{" "}
+                    </h4>
+                  </ul>
+                  </div>
+
+                  <div className="col-lg-3">
                       <Link
                         className="text-white btn btn-primary btn-lg justify-content-end"
                         to={`/list-of-all-notification-specific-user`}
@@ -70,8 +86,7 @@ function NotificationByPhonezNo() {
                         List Of All Notification
                       </Link>
                     </div>
-                  </div>
-                </div>
+                </nav>
 
                 <div className="card shadow m-5 bg-white">
                   <div className="card-body">
