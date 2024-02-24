@@ -10,10 +10,12 @@ function LoginPage() {
   const [passwordError, setPasswordError] = useState('');
   const [inCorrect, setIncorreact] = useState(false);
   const navigateToOtherPage = () => {
+    // Username validation
     if (!userName) {
       setUserNameError('User Name is required');
       return;
     }
+    // Password validation
     if (!password) {
       setPasswordError('Password is required');
       return;
@@ -25,7 +27,9 @@ function LoginPage() {
     try {
       const response = await loginUser(userName, password);
       window.location.href = '/dashboard';
+      // Handle the response here, e.g., redirect to another page
       console.log(response);
+
     } catch (error) {
       setIncorreact(true);
       console.error('Error during login:', error.message);
@@ -73,7 +77,7 @@ function LoginPage() {
           {passwordError && <div className="invalid-feedback">{passwordError}</div>}
         </div>
         {inCorrect == true ? <><p style={{ color: "red" }}>Email or Password not match</p></> : <></>}
-        <div className="text-lg-start" >
+        <div className="text-lg-start mt-4 pt-2">
           <button onClick={navigateToOtherPage} className="btn btn-lg" style={{backgroundColor:"#D54EC8", color:"white"}}>Proceed</button>
         </div>
       </form>

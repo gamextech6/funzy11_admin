@@ -99,18 +99,14 @@ function AddRankAndPriceList() {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
   return (
     <div>
       <body id="page-top">
-        <div id="wrapper" className="row m-0">
-          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
-            <Sidebar />
-          </div>
-          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
-            <div id="content-wrapper" className="d-flex flex-column">
-              <div id="content bg-white">
-                <nav
+        <div id="wrapper">
+          <Sidebar />
+          <div id="content-wrapper" className="d-flex flex-column bg-white">
+            <div id="content">
+            <nav
                   className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
                   style={{ height: "80px" }}
                 >
@@ -134,7 +130,20 @@ function AddRankAndPriceList() {
                         <div className="d-flex justify-content-between align-items-center ml-4 mr-4">
                           <img src={teamaLogo} alt="" width="70" />
                           <h5 className="card-title mb-0">{teamaName}</h5>
-                          <h5 className="timeBorder time text-danger pt-3">
+                          <h5 className="time text-danger"
+                              style={{
+                                border: "2px solid rgba(255, 0, 0, 0.1)",
+                                borderRadius: "50px",
+                                padding: "5px",
+                                width: "272.93px",
+                                height: "44.88px",
+                                backgroundColor: "rgba(255, 0, 0, 0.1)",
+                                textAlign: "center",
+                                display: "flex",
+                                justifyContent: "center",
+                                paddingTop: "1%",
+                                fontSize: "12px",
+                              }}>
                             {startTime}
                           </h5>
                           <h5 className="card-title mb-0">{teambName}</h5>
@@ -378,15 +387,14 @@ function AddRankAndPriceList() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <footer className="sticky-footer bg-white">
-                <div className="container my-auto">
-                  <div className="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2023</span>
-                  </div>
-                </div>
-              </footer>
             </div>
+            <footer className="sticky-footer bg-white">
+              <div className="container my-auto">
+                <div className="copyright text-center my-auto">
+                  <span>Copyright &copy; Your Website 2023</span>
+                </div>
+              </div>
+            </footer>
           </div>
         </div>
         <a className="scroll-to-top rounded" href="#page-top">

@@ -128,19 +128,28 @@ function PostPrizePool() {
   return (
     <div>
       <body id="page-top">
-        <div id="wrapper" className="row m-0">
-          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
-            <Sidebar />
-          </div>
-          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
-            <div id="content-wrapper" className="d-flex flex-column">
-              <div id="content bg-white">
-                <div class="card shadow">
-                  <div class="card-body">
-                    <h4 className="pl-3">Post Poll Prize</h4>
-                  </div>
-                </div>
-                <div className="container-fluid p-4 bg-white">
+        <div id="wrapper">
+          <Sidebar />
+          <div id="content-wrapper" className="d-flex flex-column bg-white">
+            <div id="content">
+            <nav
+                className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                style={{ height: "80px" }}
+              >
+                <ul className="navbar-nav text-black">
+                  <h4
+                    className="ml-2"
+                    style={{
+                      fontFamily: "Poppins",
+                      fontSize: "30px",
+                      fontWeight: "400",
+                    }}
+                  >
+                    Post Poll Prize
+                  </h4>
+                </ul>
+              </nav>
+              <div className="container-fluid p-4 bg-white">
                   <div className="row">
                     <div className="col-lg-12 mb-4 col-sm-12">
                       <div className="card shadow p-3">
@@ -409,15 +418,14 @@ function PostPrizePool() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <footer className="sticky-footer bg-white">
-                <div className="container my-auto">
-                  <div className="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2023</span>
-                  </div>
-                </div>
-              </footer>
             </div>
+            <footer className="sticky-footer bg-white">
+              <div className="container my-auto">
+                <div className="copyright text-center my-auto">
+                  <span>Copyright &copy; Your Website 2023</span>
+                </div>
+              </div>
+            </footer>
           </div>
         </div>
         <a className="scroll-to-top rounded" href="#page-top">

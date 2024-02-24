@@ -10994,13 +10994,14 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-    background-color: #f8f9fc;
+    background-color: white !important;
     width: 100%;
     overflow-x: hidden
 }
 
 #wrapper #content-wrapper #content {
-    flex: 1 0 auto
+    flex: 1 0 auto;
+    background-color: white !important;
 }
 
 .container,
@@ -11575,7 +11576,7 @@ a:focus {
     padding: .5rem 0;
     min-width: 10rem;
     font-size: .85rem;
-    margin: 0 0 0rem 0
+    margin: 0 0 1rem 0
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-header,
@@ -11659,10 +11660,10 @@ a:focus {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 800;
- 
+    padding: 1.5rem 1rem;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: .04rem;
+    letter-spacing: .05rem;
     z-index: 1
 }
 
@@ -11674,11 +11675,13 @@ a:focus {
     display: none
 }
 
-
+.sidebar hr.sidebar-divider {
+    margin: 0 1rem 1rem
+}
 
 .sidebar .sidebar-heading {
     text-align: center;
-
+    padding: 0 1rem;
     font-weight: 800;
     font-size: .65rem
 }
@@ -11713,7 +11716,7 @@ a:focus {
 
 @media (min-width:768px) {
     .sidebar {
-        width: 14rem 
+        width: 14rem !important
     }
 
     .sidebar .nav-item .collapse {
@@ -11745,6 +11748,7 @@ a:focus {
         width: 100%;
         text-align: left;
         padding: 1rem;
+        width: 14rem
     }
 
     .sidebar .nav-item .nav-link i {

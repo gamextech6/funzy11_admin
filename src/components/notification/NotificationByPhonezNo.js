@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../comman/Sidebar";
 import Modal from "react-modal";
+import Header from "../comman/Header";
 import { Link } from "react-router-dom";
 import { sendNotificationToSpecificUser } from "../../api";
 
@@ -49,16 +50,11 @@ function NotificationByPhonezNo() {
   return (
     <div>
       <body id="page-top">
-        <div id="wrapper" className="row m-0">
-          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
-            <Sidebar />
-          </div>
-          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
-            <div id="content-wrapper bg-white" className="d-flex flex-column">
-              <div id="content bg-white">
-               
-
-                <nav
+        <div id="wrapper">
+          <Sidebar />
+          <div id="content-wrapper" className="d-flex flex-column bg-white">
+            <div id="content">
+            <nav
                   className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
                   style={{ height: "80px" }}
                 >
@@ -76,112 +72,94 @@ function NotificationByPhonezNo() {
                     </h4>
                   </ul>
                   </div>
-
-                  <div className="col-lg-3">
-                      <Link
-                        className="text-white btn btn-primary btn-lg justify-content-end"
-                        to={`/list-of-all-notification-specific-user`}
-                        state={{marginLeft: "50%"}}
-                      >
-                        List Of All Notification
-                      </Link>
-                    </div>
                 </nav>
-
-                <div className="card shadow m-5 bg-white">
-                  <div className="card-body">
-                    <form onSubmit={handleFormSubmit}>
-                      <div className="form-group mb-4">
-                        <label htmlFor="prizePool">Phone No.</label>
-                        <input
-                          type="text"
-                          id="prizePool"
-                          className={`form-control ${
-                            errors.phoneNumber ? "is-invalid" : ""
-                          }`}
-                          placeholder="Enter Phone No."
-                          value={formData.phoneNumber}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              phoneNumber: e.target.value,
-                            })
-                          }
-                        />
-                        {errors.phoneNumber && (
-                          <div className="invalid-feedback">
-                            {errors.phoneNumber}
-                          </div>
-                        )}
-                      </div>
-                      <div className="form-group mb-4">
-                        <label htmlFor="entryFee">Title</label>
-                        <input
-                          type="text"
-                          id="entryFee"
-                          className={`form-control ${
-                            errors.title ? "is-invalid" : ""
-                          }`}
-                          placeholder="Enter Title"
-                          value={formData.title}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              title: e.target.value,
-                            })
-                          }
-                        />
-                        {errors.title && (
-                          <div className="invalid-feedback">{errors.title}</div>
-                        )}
-                      </div>
-                      <div className="form-group mb-4">
-                        <label htmlFor="entryFee">Message</label>
-                        <input
-                          type="text"
-                          id="entryFee"
-                          className={`form-control ${
-                            errors.message ? "is-invalid" : ""
-                          }`}
-                          placeholder="Enter message"
-                          value={formData.message}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              message: e.target.value,
-                            })
-                          }
-                        />
-                        {errors.message && (
-                          <div className="invalid-feedback">
-                            {errors.message}
-                          </div>
-                        )}
-                      </div>
-                      <div className="text-lg-start mt-4 pt-2">
-                        <button
-                          type="submit"
-                          className="btn btn-lg"
-                          style={{
-                            backgroundColor: "#924ACD",
-                            color: "#fff",
-                          }}
-                        >
-                          Proceed
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+              <div className="card shadow m-5">
+                <div className="card-body">
+                  <form onSubmit={handleFormSubmit}>
+                    <div className="form-group mb-4">
+                      <label htmlFor="prizePool">Phone No.</label>
+                      <input
+                        type="text"
+                        id="prizePool"
+                        className={`form-control ${
+                          errors.phoneNumber ? "is-invalid" : ""
+                        }`}
+                        placeholder="Enter Phone No."
+                        value={formData.phoneNumber}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            phoneNumber: e.target.value,
+                          })
+                        }
+                      />
+                      {errors.phoneNumber && (
+                        <div className="invalid-feedback">
+                          {errors.phoneNumber}
+                        </div>
+                      )}
+                    </div>
+                    <div className="form-group mb-4">
+                      <label htmlFor="entryFee">Title</label>
+                      <input
+                        type="text"
+                        id="entryFee"
+                        className={`form-control ${
+                          errors.title ? "is-invalid" : ""
+                        }`}
+                        placeholder="Enter Title"
+                        value={formData.title}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            title: e.target.value,
+                          })
+                        }
+                      />
+                      {errors.title && (
+                        <div className="invalid-feedback">{errors.title}</div>
+                      )}
+                    </div>
+                    <div className="form-group mb-4">
+                      <label htmlFor="entryFee">Message</label>
+                      <input
+                        type="text"
+                        id="entryFee"
+                        className={`form-control ${
+                          errors.message ? "is-invalid" : ""
+                        }`}
+                        placeholder="Enter message"
+                        value={formData.message}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            message: e.target.value,
+                          })
+                        }
+                      />
+                      {errors.message && (
+                        <div className="invalid-feedback">{errors.message}</div>
+                      )}
+                    </div>
+                    <div className="text-lg-start mt-4 pt-2">
+                      <button type="submit" className="btn btn-lg" style={{
+                                    backgroundColor: "#924ACD",
+                                    color: "#fff",
+                                  }}>
+                        Proceed
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
-              <footer className="sticky-footer bg-white">
-                <div className="container my-auto">
-                  <div className="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2023</span>
-                  </div>
-                </div>
-              </footer>
             </div>
+            <footer className="sticky-footer bg-white">
+              <div className="container my-auto">
+                <div className="copyright text-center my-auto">
+                  <span>Copyright &copy; Your Website 2023</span>
+                </div>
+              </div>
+            </footer>
           </div>
         </div>
         <a className="scroll-to-top rounded" href="#page-top">

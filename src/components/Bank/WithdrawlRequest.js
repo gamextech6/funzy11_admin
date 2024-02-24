@@ -31,14 +31,11 @@ function WithdrawalRequest() {
   return (
     <div>
       <body id="page-top">
-        <div id="wrapper" className="row m-0">
-          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
-            <Sidebar />
-          </div>
-          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0 bg-white">
-            <div id="content-wrapper" className="d-flex flex-column">
-              <div id="content" className="bg-white">
-                <nav
+        <div id="wrapper">
+          <Sidebar />
+          <div id="content-wrapper" className="d-flex flex-column bg-white">
+            <div id="content">
+            <nav
                   className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
                   style={{ height: "80px" }}
                 >
@@ -57,7 +54,6 @@ function WithdrawalRequest() {
                     </p>
                   </ul>
                 </nav>
-
                 <div className="container mt-5 bg-white">
                   <div className="row">
                     <div className="col-lg-12 mb-4 col-sm-12">
@@ -185,17 +181,16 @@ function WithdrawalRequest() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <footer className="sticky-footer bg-white">
-                <div className="container my-auto">
-                  <div className="copyright text-center my-auto">
-                    <span>
-                      Copyright &copy; Your Website {new Date().getFullYear()}
-                    </span>
-                  </div>
-                </div>
-              </footer>
             </div>
+            <footer className="sticky-footer bg-white">
+              <div className="container my-auto">
+                <div className="copyright text-center my-auto">
+                  <span>
+                    Copyright &copy; Your Website {new Date().getFullYear()}
+                  </span>
+                </div>
+              </div>
+            </footer>
           </div>
         </div>
         <a className="scroll-to-top rounded" href="#page-top">

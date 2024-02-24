@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Sidebar from "../comman/Sidebar";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Sidebar from '../comman/Sidebar';
+import Header from '../comman/Header';
 import { getUserByPhoneNo, blockUser, unblockUser } from "../../api";
 
 const UserDetails = ({ match }) => {
@@ -57,206 +58,201 @@ const UserDetails = ({ match }) => {
   return (
     <div className="card">
       <body id="page-top">
-        <div id="wrapper" className="row m-0">
-          <div className="col-lg-2 col-xl-2 col-md-2 col-sm-2 p-0">
-            <Sidebar />
-          </div>
-          <div className="col-lg-10 col-xl-10 col-md-10 col-sm-10 p-0">
-            <div id="content-wrapper" className="d-flex flex-column">
-              <div id="content " className="bg-white">
-                <nav
-                  className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-                  style={{ height: "80px" }}
-                >
-                  <ul className="navbar-nav text-black">
-                    <h4
-                      className="ml-2"
-                      style={{
-                        fontFamily: "Poppins",
-                        fontSize: "30px",
-                        fontWeight: "400",
-                      }}
+        <div id="wrapper">
+          <Sidebar />
+          <div id="content-wrapper" className="d-flex flex-column">
+            <div id="content" className="bg-white">
+              <nav
+                className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                style={{ height: "80px" }}
+              >
+                <ul className="navbar-nav text-black">
+                  <h4
+                    className="ml-2"
+                    style={{
+                      fontFamily: "Poppins",
+                      fontSize: "30px",
+                      fontWeight: "400",
+                    }}
+                  >
+                    User Details
+                  </h4>
+                </ul>
+              </nav>
+
+              <div
+                className="mt-5"
+                style={{ marginRight: "200px", marginLeft: "100px" }}
+              >
+                <div className="row">
+                  <div className="col-lg-12 mb-4 col-sm-12">
+                    <div
+                      className="table-container"
+                      style={{ overflowX: "auto" }}
                     >
-                      User Details
-                    </h4>
-                  </ul>
-                </nav>
-
-                <div
-                  className="mt-5"
-                  style={{ marginRight: "200px", marginLeft: "100px" }}
-                >
-                  <div className="row">
-                    <div className="col-lg-12 mb-4 col-sm-12">
-                      <div
-                        className="table-container"
-                        style={{ overflowX: "auto" }}
+                      <table
+                        className="table text-center align-items-center rounded border "
+                        style={{ padding: "2rem", paddingTop: "2rem" }}
                       >
-                        <table
-                          className="table text-center align-items-center rounded border "
-                          style={{ padding: "2rem", paddingTop: "2rem" }}
-                        >
-                          <tbody>
-                            <tr
-                              className="align-items-center"
-                              style={{ height: "70px" }}
+                        <tbody>
+                          <tr
+                            className="align-items-center"
+                            style={{ height: "70px" }}
+                          >
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                              className="mt-4"
                             >
+                              Phone Number{" "}
+                            </td>
+                            {phoneNo && (
                               <td
                                 style={{
                                   padding: "1.5rem",
                                   paddingTop: "1.5rem",
                                 }}
-                                className="mt-4"
                               >
-                                Phone Number{" "}
+                                {phoneNo}
                               </td>
-                              {phoneNo && (
-                                <td
-                                  style={{
-                                    padding: "1.5rem",
-                                    paddingTop: "1.5rem",
-                                  }}
-                                >
-                                  {phoneNo}
-                                </td>
-                              )}
-                            </tr>
+                            )}
+                          </tr>
 
-                            <tr style={{ height: "70px" }}>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                First Name{" "}
-                              </td>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                {firstName == null || undefined
-                                  ? "-"
-                                  : firstName}
-                              </td>
-                            </tr>
-                            <tr style={{ height: "70px" }}>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                Last Name{" "}
-                              </td>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                {lastName == null || undefined ? "-" : lastName}
-                              </td>
-                            </tr>
+                          <tr style={{ height: "70px" }}>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              First Name{" "}
+                            </td>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              {firstName == null || undefined
+                                ? "-"
+                                : firstName}
+                            </td>
+                          </tr>
+                          <tr style={{ height: "70px" }}>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              Last Name{" "}
+                            </td>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              {lastName == null || undefined ? "-" : lastName}
+                            </td>
+                          </tr>
 
-                            <tr style={{ height: "70px" }}>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                Email ID{" "}
-                              </td>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                {gender == null || undefined ? "-" : gender}
-                              </td>
-                            </tr>
+                          <tr style={{ height: "70px" }}>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              Email ID{" "}
+                            </td>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              {gender == null || undefined ? "-" : gender}
+                            </td>
+                          </tr>
 
-                            <tr style={{ height: "70px" }}>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                Available Balance
-                              </td>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                {balance == null || undefined ? "-" : balance}
-                              </td>
-                            </tr>
-                            <tr style={{ height: "70px" }}>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                Active / Inactive
-                              </td>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                {isActive ? "Active" : "Inactive"}
-                              </td>
-                            </tr>
-                            <tr style={{ height: "70px" }}>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                Block / Unblock
-                              </td>
-                              <td
-                                style={{
-                                  padding: "1.5rem",
-                                  paddingTop: "1.5rem",
-                                }}
-                              >
-                                <button
-                                  type="button"
-                                  className={`btn ${
-                                    isBlocked ? "btn-success" : "btn-danger"
+                          <tr style={{ height: "70px" }}>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              Available Balance
+                            </td>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              {balance == null || undefined ? "-" : balance}
+                            </td>
+                          </tr>
+                          <tr style={{ height: "70px" }}>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              Active / Inactive
+                            </td>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              {isActive ? "Active" : "Inactive"}
+                            </td>
+                          </tr>
+                          <tr style={{ height: "70px" }}>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              Block / Unblock
+                            </td>
+                            <td
+                              style={{
+                                padding: "1.5rem",
+                                paddingTop: "1.5rem",
+                              }}
+                            >
+                              <button
+                                type="button"
+                                className={`btn ${isBlocked ? "btn-success" : "btn-danger"
                                   }`}
-                                  onClick={handleToggleBlockUser}
-                                >
-                                  {isBlocked ? "Unblock" : "Block"}
-                                </button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                                onClick={handleToggleBlockUser}
+                              >
+                                {isBlocked ? "Unblock" : "Block"}
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
-              <footer className="sticky-footer bg-white">
-                <div className="container my-auto">
-                  <div className="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2023</span>
-                  </div>
-                </div>
-              </footer>
             </div>
+            <footer className="sticky-footer fixed-bottom bg-white">
+              <div className="container my-auto">
+                <div className="copyright text-center my-auto">
+                  <span>Copyright &copy; Your Website 2023</span>
+                </div>
+              </div>
+            </footer>
           </div>
         </div>
         <a className="scroll-to-top rounded" href="#page-top">
